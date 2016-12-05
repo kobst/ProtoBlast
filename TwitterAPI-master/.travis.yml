@@ -1,0 +1,9 @@
+language: objective-c
+env:
+    matrix:
+    - XCODE_SCHEME="TwitterAPI iOS" XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 6"
+    - XCODE_SCHEME="TwitterAPI Mac" XCODE_DESTINATION="platform=OS X,arch=x86_64"
+before_install:
+    - carthage bootstrap --verbose --platform ios,mac
+script: xcodebuild -project TwitterAPI.xcodeproj -scheme "$XCODE_SCHEME" -destination "$XCODE_DESTINATION" -configuration Release build test
+osx_image: xcode8
