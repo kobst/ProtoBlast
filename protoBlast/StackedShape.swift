@@ -29,7 +29,13 @@ class StackedShape: UIView {
 //        self.backImageView = UIImageView(image: backgroundImage)
 //        self.idImageView = UIImageView()
         
-        let box = CGRect(x: xx, y: yy, width: 100, height: 100)
+    
+        
+        
+        
+        
+        
+        let box = CGRect()
         messageField = UITextField()
         senderNameField = UILabel()
         idImageView = UIImageView(image: idImage)
@@ -77,9 +83,7 @@ class StackedShape: UIView {
         
         NSLayoutConstraint(item: idImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute:.height, multiplier: 1.0, constant:0.0).isActive = true
         
-        
         NSLayoutConstraint(item: idImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        
         
         NSLayoutConstraint(item: idImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
         
@@ -109,8 +113,10 @@ class StackedShape: UIView {
     }
     
     
-    func setFrame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
-        frame = CGRect(x: x, y: y, width: width, height: height)
+    func move(xy: CGFloat) {
+        
+        
+        
     }
 
 }

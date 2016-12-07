@@ -15,32 +15,78 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIGestureReco
     
     var locationManager = CLLocationManager()
     
-    var location = CLLocationCoordinate2D(latitude: 50.0, longitude: 50.0)
+    var mylocation = CLLocationCoordinate2D(latitude: 50.0, longitude: 50.0)
     
+    @IBOutlet weak var vectorLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         view.backgroundColor = UIColor.blue
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
         
-//        let testShape = StackedShape(message: "testesttest", senderName: "id", idImage: image, xx: 50, yy: 200)
-//        let testShape2 = StackedShape(message: "testesttest", senderName: "id", xx: 120, yy: 20)
-//        let testShape3 = StackedShape(message: "testesttest", senderName: "id", xx: 160, yy: 100)
-        
 
+        
+        print(test.messageField.text!)
+        print(test4.senderNameField.text!)
+        
+        
         for msg in messages {
+
+            let sizeX = (-1/35)*(msg.dist) + 0.189
+            var sizeFactor = CGFloat()
+            
+            if sizeX < 0.075 {
+                sizeFactor = 0.075
+            }
+            
+            if sizeX > 0.175 {
+                sizeFactor = 0.175
+            }
+            else {sizeFactor = CGFloat(sizeX)}
+            
+            
+            let xPosFactor = CGFloat(2.0 - sizeX)
+            let yPosFactor = 1.0
+            
             view.addSubview(msg)
+//            
+//            let widthConstraint = NSLayoutConstraint(item: msg, attribute: .width, relatedBy: .equal, toItem: view, attribute:.width, multiplier: sizeFactor, constant:0.0)
+//            
+//            let squareConstraint = NSLayoutConstraint(item: msg, attribute: .height, relatedBy: .equal, toItem: msg, attribute:.height, multiplier: 1.0, constant:0.0)
+//            
+//            let xConstraint = NSLayoutConstraint(item: msg, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: xPosFactor, constant: 0.0)
+//            
+//            let yConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
+//            
+//            
+//            print("--------------------------------HERE")
+//            
+//            NSLayoutConstraint.activate([widthConstraint, squareConstraint, xConstraint, yConstraint])
+            
+            
+            
+            NSLayoutConstraint(item: msg, attribute: .width, relatedBy: .equal, toItem: view, attribute:.width, multiplier: sizeFactor, constant:0.0).isActive = true
+            
+            NSLayoutConstraint(item: msg, attribute: .height, relatedBy: .equal, toItem: msg, attribute:.height, multiplier: 1.0, constant:0.0).isActive = true
+            
+            NSLayoutConstraint(item: msg, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: xPosFactor, constant: 0.0).isActive = true
+            
+            NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+            
+            
+    
         }
         
+    
+        
 
-        var sliderPGR = UIPanGestureRecognizer(target: self, action: #selector(ViewController.exampleGestureHandler(sender:)))
+        let sliderPGR = UIPanGestureRecognizer(target: self, action: #selector(ViewController.gestureHandler(sender:)))
         sliderPGR.delegate = self
         view.addGestureRecognizer(sliderPGR)
         
@@ -65,43 +111,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIGestureReco
         
         let longitude = userLocation.coordinate.longitude
         
-        location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        mylocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
     }
-    
-    
-    
-//    tapGR＆ = UITapGestureRecognizer(target: self, action: #selector(ComposerVC.viewTapped(sender:)))
-//    tapGR＆.delegate = self
-//    view.addGestureRecognizer(tapGR＆)
     
     
 
     
     
-//    @IBAction func search(_ sender: Any) {
-//        let terms = searchField.text!
-//        
-//        let encodedText = terms.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-//        
-//        str = String(format: "https://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=false", encodedText);
-//        
-//        fetchData() { result in
-//            self.textView.text = result
-//        }
-//        
-//    }
-    
-    
-    func exampleGestureHandler(sender: UIPanGestureRecognizer) {
+    func gestureHandler(sender: UIPanGestureRecognizer) {
+        
+        let panVectorⓖ² = sender.translation(in: view)
+        
+        vectorLabel.text = String(describing: panVectorⓖ²)
+        
+        let xMove = panVectorⓖ².x
+        
+        let yMove = panVectorⓖ².y
+        
+        
+        
+        
         
     }
+
+
+
 }
 
-    
-    
-    
-    
-    
+
+
+
 
 

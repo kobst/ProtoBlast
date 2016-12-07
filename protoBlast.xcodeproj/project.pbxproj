@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848C542E1DF7009B00F4B762 /* garbage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542D1DF7009B00F4B762 /* garbage.swift */; };
+		848C54301DF720BE00F4B762 /* shapeV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542F1DF720BE00F4B762 /* shapeV2.swift */; };
 		84F2DD4F1DF079AC00AD45A7 /* StackedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */; };
 		84F3B93A1DD6951800C8D0F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */; };
 		84F3B93C1DD6951800C8D0F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B93B1DD6951800C8D0F0 /* ViewController.swift */; };
@@ -14,9 +16,14 @@
 		84F3B9411DD6951800C8D0F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B9401DD6951800C8D0F0 /* Assets.xcassets */; };
 		84F3B9441DD6951800C8D0F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B9421DD6951800C8D0F0 /* LaunchScreen.storyboard */; };
 		84F3B94C1DD6952A00C8D0F0 /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B94B1DD6952A00C8D0F0 /* data.swift */; };
+		AAB25392D87105A438CB3C64 /* Pods_protoBlast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E60277CA2CA864CD45A6DE /* Pods_protoBlast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300AD6080DDF093CA0FF39BD /* Pods-protoBlast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-protoBlast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-protoBlast/Pods-protoBlast.debug.xcconfig"; sourceTree = "<group>"; };
+		6FD3C44F66E8F41E10C321E6 /* Pods-protoBlast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-protoBlast.release.xcconfig"; path = "Pods/Target Support Files/Pods-protoBlast/Pods-protoBlast.release.xcconfig"; sourceTree = "<group>"; };
+		848C542D1DF7009B00F4B762 /* garbage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = garbage.swift; sourceTree = "<group>"; };
+		848C542F1DF720BE00F4B762 /* shapeV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shapeV2.swift; sourceTree = "<group>"; };
 		84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedShape.swift; sourceTree = "<group>"; };
 		84F3B9361DD6951800C8D0F0 /* protoBlast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = protoBlast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +33,7 @@
 		84F3B9431DD6951800C8D0F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F3B9451DD6951800C8D0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F3B94B1DD6952A00C8D0F0 /* data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		E9E60277CA2CA864CD45A6DE /* Pods_protoBlast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_protoBlast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB25392D87105A438CB3C64 /* Pods_protoBlast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16D6F634A771917EA52E7C48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				300AD6080DDF093CA0FF39BD /* Pods-protoBlast.debug.xcconfig */,
+				6FD3C44F66E8F41E10C321E6 /* Pods-protoBlast.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		84F3B92D1DD6951800C8D0F0 = {
 			isa = PBXGroup;
 			children = (
 				84F3B9381DD6951800C8D0F0 /* protoBlast */,
 				84F3B9371DD6951800C8D0F0 /* Products */,
+				16D6F634A771917EA52E7C48 /* Pods */,
+				AE16C8C5FE218D5EC23EBE26 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,12 +82,22 @@
 				84F3B93B1DD6951800C8D0F0 /* ViewController.swift */,
 				84F3B94B1DD6952A00C8D0F0 /* data.swift */,
 				84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */,
+				848C542F1DF720BE00F4B762 /* shapeV2.swift */,
 				84F3B93D1DD6951800C8D0F0 /* Main.storyboard */,
+				848C542D1DF7009B00F4B762 /* garbage.swift */,
 				84F3B9401DD6951800C8D0F0 /* Assets.xcassets */,
 				84F3B9421DD6951800C8D0F0 /* LaunchScreen.storyboard */,
 				84F3B9451DD6951800C8D0F0 /* Info.plist */,
 			);
 			path = protoBlast;
+			sourceTree = "<group>";
+		};
+		AE16C8C5FE218D5EC23EBE26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9E60277CA2CA864CD45A6DE /* Pods_protoBlast.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F3B9481DD6951800C8D0F0 /* Build configuration list for PBXNativeTarget "protoBlast" */;
 			buildPhases = (
+				EDB0B5777AB1F141AAC74409 /* [CP] Check Pods Manifest.lock */,
 				84F3B9321DD6951800C8D0F0 /* Sources */,
 				84F3B9331DD6951800C8D0F0 /* Frameworks */,
 				84F3B9341DD6951800C8D0F0 /* Resources */,
+				F3895E628B3911E16DDDE119 /* [CP] Embed Pods Frameworks */,
+				C0C93D846574D82AA53080A1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,6 +170,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C0C93D846574D82AA53080A1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-protoBlast/Pods-protoBlast-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDB0B5777AB1F141AAC74409 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F3895E628B3911E16DDDE119 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-protoBlast/Pods-protoBlast-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84F3B9321DD6951800C8D0F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -144,6 +225,8 @@
 			files = (
 				84F3B93C1DD6951800C8D0F0 /* ViewController.swift in Sources */,
 				84F2DD4F1DF079AC00AD45A7 /* StackedShape.swift in Sources */,
+				848C542E1DF7009B00F4B762 /* garbage.swift in Sources */,
+				848C54301DF720BE00F4B762 /* shapeV2.swift in Sources */,
 				84F3B94C1DD6952A00C8D0F0 /* data.swift in Sources */,
 				84F3B93A1DD6951800C8D0F0 /* AppDelegate.swift in Sources */,
 			);
@@ -264,6 +347,7 @@
 		};
 		84F3B9491DD6951800C8D0F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 300AD6080DDF093CA0FF39BD /* Pods-protoBlast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = protoBlast/Info.plist;
@@ -276,6 +360,7 @@
 		};
 		84F3B94A1DD6951800C8D0F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FD3C44F66E8F41E10C321E6 /* Pods-protoBlast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = protoBlast/Info.plist;

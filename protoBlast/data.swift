@@ -92,18 +92,51 @@ func fetchData(closure: @escaping (String) -> ()) {
 
 
 
+
+
+
+
 // @40.7369392,-73.9918239  40.742164,-73.992088
 var messageList: [blastMessage] = []
 
 
+let test = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 2.2)
 
-let testShape = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 50, yy: 200)
-let testShape2 = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 90, yy: 20)
-let testShape3 = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 150, yy: 110)
+let test2 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 0.2)
+
+let test3 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 3.2)
+
+let test4 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 1.8)
+
+let messages = [test, test2, test3, test4]
+
+
+// create an enum calling it list or stack
+//keep a static array of all messages...keeping track of list/stack..
+//
+
+//arrange the stacked view once. then render list. 
+//render list/stacked within a margin. 
+
+// when vector moves, update based on new time/distance....
+
+//let test = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 50, yy: 200)
+//let test2 = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 90, yy: 20)
+//let test3 = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 150, yy: 110)
+
+
+//let test = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 2.2, )
+//
+//let test2 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 0.2)
+//
+//let test3 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 3.2)
+//
+//let test4 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 1.8)
+//
+//var messages = [test, test2, test3, test4]
 
 
 
-var messages = [testShape, testShape2, testShape3]
 
 
 
