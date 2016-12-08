@@ -16,21 +16,21 @@
 		0B3BEE5A2CBFEDA4C115096B8AB3838E /* Pods-protoBlast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-protoBlast.debug.xcconfig"; sourceTree = "<group>"; };
 		183D7522804EAAA0420A266AF21B8133 /* Pods-protoBlast-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-protoBlast-dummy.m"; sourceTree = "<group>"; };
 		28312186C322A74A61CE43697138CCC6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
-		3CD28CA65898538F68A6BE515CD4CD26 /* Pods_protoBlast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_protoBlast.framework; path = "Pods-protoBlast.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CD28CA65898538F68A6BE515CD4CD26 /* Pods_protoBlast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_protoBlast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5C6D09BFC894E6AC301EB649E2800F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E396D0EFEB42CA7ADD1D1895A2F6E15 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = iOS/TwitterCore.framework; sourceTree = "<group>"; };
 		4F81A8DA7A4DD5F3DECF0E2270ECB639 /* Pods-protoBlast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-protoBlast.release.xcconfig"; sourceTree = "<group>"; };
 		6EBDF49FCB3F7C0DC6A68D2CD030C061 /* Pods-protoBlast-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-protoBlast-acknowledgements.plist"; sourceTree = "<group>"; };
 		73BCF69C471430A4D12A3710EC326BEB /* Pods-protoBlast-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-protoBlast-frameworks.sh"; sourceTree = "<group>"; };
 		7405B9011FE1CBDF5335C2D57DDC4019 /* Pods-protoBlast-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-protoBlast-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B7C075EAC13835B78E2558B9CBECF9F /* Pods-protoBlast-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-protoBlast-umbrella.h"; sourceTree = "<group>"; };
 		B240D65485509CF7EE0998A8DD37E68D /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
 		BBCCF59BD8B77C768DD936C8892A471F /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterKit.framework; path = iOS/TwitterKit.framework; sourceTree = "<group>"; };
 		CB7209AFAE49D687A4AB15AA2C9A73DE /* Pods-protoBlast-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-protoBlast-resources.sh"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DFEB9418A8A8EB2F5863DFCB9B689717 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
-		E07AD971B86DC129328ED1B6C23B8D0E /* Pods-protoBlast.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-protoBlast.modulemap"; sourceTree = "<group>"; };
+		E07AD971B86DC129328ED1B6C23B8D0E /* Pods-protoBlast.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-protoBlast.modulemap"; sourceTree = "<group>"; };
 		E5F844671CFECD95B1DC4725713B13CC /* TwitterKitResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +102,6 @@
 			children = (
 				B1A0E5407F061703CD8312BBB914D1EF /* Frameworks */,
 			);
-			name = TwitterCore;
 			path = TwitterCore;
 			sourceTree = "<group>";
 		};
@@ -130,7 +129,6 @@
 				6244FE393E8B9DFF3E7790F0DC742EF8 /* Frameworks */,
 				4DBD6493E5C509076AE36D8AB0E5A90A /* Resources */,
 			);
-			name = TwitterKit;
 			path = TwitterKit;
 			sourceTree = "<group>";
 		};
@@ -159,7 +157,6 @@
 				DFEB9418A8A8EB2F5863DFCB9B689717 /* Fabric.h */,
 				17A11F737FAE865798D118450678B032 /* Frameworks */,
 			);
-			name = Fabric;
 			path = Fabric;
 			sourceTree = "<group>";
 		};
@@ -218,6 +215,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					E51416A559CE527D52FD03388ACB432D = {
+						LastSwiftMigration = 0810;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -252,6 +254,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B3BEE5A2CBFEDA4C115096B8AB3838E /* Pods-protoBlast.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -277,6 +280,8 @@
 				PRODUCT_NAME = Pods_protoBlast;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -287,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F81A8DA7A4DD5F3DECF0E2270ECB639 /* Pods-protoBlast.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -312,6 +318,7 @@
 				PRODUCT_NAME = Pods_protoBlast;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

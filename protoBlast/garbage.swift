@@ -7,6 +7,58 @@
 //
 
 import Foundation
+
+
+
+//class testShape2: UIView {
+//    var messageField: UITextField
+//    var senderNameField: UILabel
+//    var idImageView: UIImageView
+//    var time: Double
+//    var dist: Double
+//    
+//    init(message: String, senderName: String, idImage: UIImage, time: Double, dist: Double){
+//        
+//        messageField = UITextField()
+//        senderNameField = UILabel()
+//        idImageView = UIImageView(image: idImage)
+//        self.time = time
+//        self.dist = dist
+//        messageField.text = message
+//        senderNameField.text = senderName
+//        let initialRect = CGRect(x: 50, y: 50, width: 100, height: 100)
+//        
+//        super.init(frame: initialRect)
+//        
+//        layer.borderWidth = 2
+//        layer.borderColor = UIColor.red.cgColor
+//        layer.cornerRadius = self.layer.frame.size.width / 2
+//        
+//        addSubview(idImageView)
+//        
+//        self.translatesAutoresizingMaskIntoConstraints = false
+//        idImageView.translatesAutoresizingMaskIntoConstraints = false
+//        idImageView.clipsToBounds = true
+//        idImageView.layer.masksToBounds = true
+//        //        senderNameField.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        NSLayoutConstraint(item: idImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute:.width, multiplier: 1.0, constant:0.0).isActive = true
+//        
+//        NSLayoutConstraint(item: idImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute:.height, multiplier: 1.0, constant:0.0).isActive = true
+//        
+//        NSLayoutConstraint(item: idImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+//        
+//        NSLayoutConstraint(item: idImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+//        
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//}
+//
+
+
+
 //        switch sender.state {
 //        case .began:
 //            draggingTarget＆ = targets＆🅐[sender.targetNumber＃]
@@ -193,3 +245,51 @@ import Foundation
 //    
 //}
 //
+
+
+
+
+
+//let testBox = ShapeV2(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 50, yy: 200)
+//view.addSubview(testBox)
+////        testBox.backgroundColor = UIColor.red
+//
+//testBox.translatesAutoresizingMaskIntoConstraints = false
+//view.translatesAutoresizingMaskIntoConstraints = false
+//
+////
+//let widthConstraint = NSLayoutConstraint(item: testBox, attribute: .width, relatedBy: .equal, toItem: view, attribute:.width, multiplier: 0.50, constant:0.0)
+////
+//let squareConstraint = NSLayoutConstraint(item: testBox, attribute: .height, relatedBy: .equal, toItem: testBox, attribute:.width, multiplier: 1.0, constant:0.0)
+//
+//let xConstraint = NSLayoutConstraint(item: testBox, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+//
+//let yConstraint = NSLayoutConstraint(item: testBox, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 0.75, constant: 0)
+//
+//
+//NSLayoutConstraint.activate([widthConstraint, squareConstraint, xConstraint, yConstraint])
+//view.addConstraints([widthConstraint, squareConstraint, xConstraint, yConstraint])
+
+
+//        let testBox2 = ShapeV2(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 50, yy: 200)
+//
+//        view.addSubview(testBox2)
+//
+//        testBox2.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        let widthConstraintA = NSLayoutConstraint(item: testBox2, attribute: .width, relatedBy: .equal, toItem: view, attribute:.width, multiplier: 0.25, constant:0.0)
+//        //
+//        let squareConstraintA = NSLayoutConstraint(item: testBox2, attribute: .height, relatedBy: .equal, toItem: testBox2, attribute:.width, multiplier: 1.0, constant:0.0)
+//
+//        let xConstraintA = NSLayoutConstraint(item: testBox2, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.5, constant: 0.0)
+//
+//        let yConstraintA = NSLayoutConstraint(item: testBox2, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 0.35, constant: 0)
+//
+//
+//        NSLayoutConstraint.activate([widthConstraintA, squareConstraintA, xConstraintA, yConstraintA])
+//        view.addConstraints([widthConstraintA, squareConstraintA, xConstraintA, yConstraintA])
+
+
+
+//boxes.append(testBox)

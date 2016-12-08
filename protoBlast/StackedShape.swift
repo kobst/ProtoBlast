@@ -108,15 +108,6 @@ class StackedShape: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setFrame_(_ newFrame: CGRect) {
-        frame = newFrame
-    }
-    
-    
-    func move(xy: CGFloat) {
-        
-        
-        
-    }
+
 
 }

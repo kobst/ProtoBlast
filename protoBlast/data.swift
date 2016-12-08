@@ -18,13 +18,6 @@ public class TwitterServiceWrapper:NSObject {
 }
 
 
-
-
-//let swifter = Swifter(consumerKey: "eSaPtWkPEBS0KZOxRCDAQWfMU", consumerSecret: "xxt97EAmwhgQ06V7yKm9w7kqHhRxQXKrUhm4AvtfVrrhfWAQif")
-
-
-
-
 class StackShape: UIView{
     var backImage: UIImage
     var idImage: UIImage
@@ -39,8 +32,6 @@ class StackShape: UIView{
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
 
 
 
@@ -97,18 +88,18 @@ func fetchData(closure: @escaping (String) -> ()) {
 
 
 // @40.7369392,-73.9918239  40.742164,-73.992088
-var messageList: [blastMessage] = []
-
-
-let test = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 2.2)
-
-let test2 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 0.2)
-
-let test3 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 3.2)
-
-let test4 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 1.8)
-
-let messages = [test, test2, test3, test4]
+//var messageList: [blastMessage] = []
+//
+//
+//let a1 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image-1"), time: 10.0, dist: 20.2)
+//
+//let a2 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image-1"), time: 30.0, dist: 10.2)
+//
+//let a3 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image-1"), time: 90.0, dist: 5.2)
+//
+//let a4 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image-1"), time: 65.0, dist: 30.8)
+//
+//let messageA = [a1, a2, a3, a4]
 
 
 // create an enum calling it list or stack
@@ -119,21 +110,26 @@ let messages = [test, test2, test3, test4]
 //render list/stacked within a margin. 
 
 // when vector moves, update based on new time/distance....
+//
+//let test = ShapeV2(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 50, yy: 200)
+//let test2 = ShapeV2(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 90, yy: 20)
+//let test3 = ShapeV2(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 150, yy: 110)
+//
+//
+//let messages = [test, test2, test3]
+//
+//let shp2 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 2.2)
+//
+//let shp3 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 0.2)
+//
+//let shp5 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 3.2)
+//
+//let shp4 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 1.8)
+//
+//var messagesTwo = [shp2, shp3, shp4, shp5]
 
-//let test = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 50, yy: 200)
-//let test2 = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 90, yy: 20)
-//let test3 = StackedShape(message: "test", senderName: "idname", idImage: #imageLiteral(resourceName: "Image"), xx: 150, yy: 110)
 
 
-//let test = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 2.2, )
-//
-//let test2 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 0.2)
-//
-//let test3 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 3.2)
-//
-//let test4 = testShape2(message: "test", senderName: "es", idImage: #imageLiteral(resourceName: "Image"), time: 20, dist: 1.8)
-//
-//var messages = [test, test2, test3, test4]
 
 
 

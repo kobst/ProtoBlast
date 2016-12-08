@@ -8,50 +8,9 @@
 
 import Foundation
 
-
-//
-//  StackedShape.swift
-//  protoBlast
-//
-//  Created by Edward Han on 12/1/16.
-//  Copyright © 2016 Edward Han. All rights reserved.
-//
-
 import UIKit
 
-
-
-class testShape2: UIView {
-    var messageField: UITextField
-    var senderNameField: UILabel
-    var idImageView: UIImageView
-    var time: Double
-    var dist: Double
-    
-    init(message: String, senderName: String, idImage: UIImage, time: Double, dist: Double){
-        
-        messageField = UITextField()
-        senderNameField = UILabel()
-        idImageView = UIImageView(image: idImage)
-        self.time = time
-        self.dist = dist
-        messageField.text = message
-        senderNameField.text = senderName
-        let initialRect = CGRect(x: 0, y: 0, width: 100, height: 100)
-        
-        super.init(frame: initialRect)
-        
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.red.cgColor
-        layer.cornerRadius = self.layer.frame.size.width / 2
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+  
 //    
 //    override func didMoveToSuperview() {
 //        
@@ -88,10 +47,7 @@ class testShape2: UIView {
 //        
 //    }
     
-    
-    
-    
-}
+
 
 
 
@@ -101,20 +57,20 @@ class ShapeV2: UIView {
     var messageField: UITextField
     var senderNameField: UILabel
     var idImageView: UIImageView
+    var dist: CGFloat
+    var time: CGFloat
     
-    
-    init(message: String, senderName: String, idImage: UIImage, xx: CGFloat, yy: CGFloat){
+    init(message: String, senderName: String, idImage: UIImage, dist: CGFloat, time: CGFloat){
  
         
-        let xxx: CGFloat = 0.0
-        let yyy: CGFloat = 0.0
-        
-        let box = CGRect(x: xxx, y: yyy, width: 100, height: 100)
+        let box = CGRect(x: 0, y: 0, width: 100, height: 100)
         messageField = UITextField()
         senderNameField = UILabel()
         idImageView = UIImageView(image: idImage)
         messageField.text = message
         senderNameField.text = senderName
+        self.dist = dist
+        self.time = time
         
         super.init(frame: box)
         
@@ -128,12 +84,16 @@ class ShapeV2: UIView {
         
         idImageView.translatesAutoresizingMaskIntoConstraints = false
         idImageView.clipsToBounds = true
+        idImageView.center = self.center
         idImageView.layer.masksToBounds = true
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
+  
+        self.autoresizesSubviews = true
+
         NSLayoutConstraint(item: idImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute:.width, multiplier: 1.0, constant:0.0).isActive = true
-        
+
         NSLayoutConstraint(item: idImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute:.height, multiplier: 1.0, constant:0.0).isActive = true
-        
+
         NSLayoutConstraint(item: idImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
         
         NSLayoutConstraint(item: idImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
@@ -145,15 +105,12 @@ class ShapeV2: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setFrame_(_ newFrame: CGRect) {
-        frame = newFrame
+    
+    func setCornerRadius() {
+        layer.cornerRadius = self.layer.frame.size.width / 2
+        layer.masksToBounds = true
+        
     }
     
-    
-    func move(xy: CGFloat) {
-        
-        
-        
-    }
     
 }
