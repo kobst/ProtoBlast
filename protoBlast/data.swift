@@ -82,8 +82,10 @@ func fetchData(closure: @escaping (String) -> ()) {
 }
 
 
-
-
+//
+//let message = ShapeV2(message: "what", senderName: "me", idImage: #imageLiteral(resourceName: "Image"), dist: 0.4, time: 1)
+//let message2 = ShapeV2(message: "what", senderName: "me", idImage: #imageLiteral(resourceName: "Image"), dist: 2.0, time: 2)
+//let message3 = ShapeV2(message: "what", senderName: "me", idImage: #imageLiteral(resourceName: "Image"), dist: 1.2, time: 3)
 
 
 

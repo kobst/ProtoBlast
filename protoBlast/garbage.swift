@@ -8,6 +8,63 @@
 
 import Foundation
 
+//        containingView.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        let yX = CGFloat(time * 0.20)
+//        let widthX = CGFloat((-0.09375 * dist) + 0.3075)
+//        let xX = CGFloat((-8.75 * widthX) + 2.85)
+//
+//
+//        widthConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: containingView, attribute:.width, multiplier: widthX, constant:0.0)
+//        squareConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute:.width, multiplier: 1.0, constant:0.0)
+//        xConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: containingView, attribute: .centerX, multiplier: xX, constant: 0.0)
+//        yConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: containingView, attribute: .centerY, multiplier: yX, constant: 0)
+//
+//        NSLayoutConstraint.activate(superConstraints)
+//        containingView.addConstraints(superConstraints)
+
+
+
+
+
+//
+//    override func didMoveToSuperview() {
+//
+//        let sizeX = (-1/35)*dist + 0.189
+//        var sizeFactor = CGFloat()
+//
+//        if sizeX < 0.075 {
+//            sizeFactor = 0.075
+//        }
+//
+//        if sizeX > 0.175 {
+//            sizeFactor = 0.175
+//        }
+//        else {sizeFactor = CGFloat(sizeX)}
+//
+//
+//        let xPosFactor = CGFloat(2.0 - sizeX)
+//        let yPosFactor = 1.0
+//
+//        let widthConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: superview, attribute:.width, multiplier: sizeFactor, constant:0.0)
+//
+//        let squareConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute:.height, multiplier: 1.0, constant:0.0)
+//
+//        let xConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: xPosFactor, constant: 0.0)
+//
+//        let yConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1, constant: 0)
+//
+//
+//
+//        self.addConstraints([widthConstraint])
+//        self.addConstraints([squareConstraint])
+//        self.addConstraints([xConstraint])
+//        self.addConstraints([yConstraint])
+//
+//    }
+
+
 
 
 //class testShape2: UIView {
