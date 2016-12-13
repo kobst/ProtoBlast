@@ -8,12 +8,18 @@
 
 import UIKit
 import CoreLocation
+
+
 import TwitterKit
 
 
 class testViewController: UIViewController, UIGestureRecognizerDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var vectorLabel: UILabel!
+    
+    @IBOutlet weak var messageReader: UILabel!
+    
+    
     var locationManager = CLLocationManager()
     var mylocation = CLLocationCoordinate2D(latitude: 50.0, longitude: 50.0)
     
@@ -27,6 +33,57 @@ class testViewController: UIViewController, UIGestureRecognizerDelegate, CLLocat
         locationManager.startUpdatingLocation()
         
 
+
+//this works....
+        
+//        
+//        let client = TWTRAPIClient()
+//        client.loadTweet(withID: "20") { tweet, error in
+//            if let t = tweet {
+//                self.messageReader.text = t.text
+//            } else {
+//                print("Failed to load Tweet: \(error?.localizedDescription)")
+//            }
+//        }
+        
+
+//        let client = TWTRAPIClient()
+//        let dataSource = TWTRUserTimelineDataSource(screenName: "EatalyFlatiron", apiClient: client)
+        
+   
+    
+        
+        
+        // for a user timeline with para "id" doesn't work...
+        
+//        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+//        params = ["id_"]
+        
+        
+        
+        // this works... gets me back a json with all info on the tweet
+        
+        let client = TWTRAPIClient()
+        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/show.json"
+        let params = ["id": "20"]
+        var clientError : NSError?
+        
+        let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                print("json: \(json)")
+            } catch let jsonError as NSError {
+                print("json error: \(jsonError.localizedDescription)")
+            }
+        }
+        
+        
         
         
         
@@ -38,7 +95,6 @@ class testViewController: UIViewController, UIGestureRecognizerDelegate, CLLocat
         
         ShapeV2.spawnBox(message: "test", senderName: "me", idImage: #imageLiteral(resourceName: "Image"), dist: 0.4, time: 3.0, containingView: view)
         
-        print(ShapeV2.shapes)
         
         
         let sliderPGR = UIPanGestureRecognizer(target: self, action: #selector(testViewController.gestureHandler(sender:)))

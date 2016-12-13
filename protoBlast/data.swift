@@ -11,11 +11,10 @@ import UIKit
 import CoreLocation
 
 
-public class TwitterServiceWrapper:NSObject {
-    let consumerKey = "eSaPtWkPEBS0KZOxRCDAQWfMU"
-    let consumerSecret = "xxt97EAmwhgQ06V7yKm9w7kqHhRxQXKrUhm4AvtfVrrhfWAQif"
-    let authURL = "https://api.twitter.com/oauth2/token"
-}
+
+let consumerKey = "eSaPtWkPEBS0KZOxRCDAQWfMU"
+let consumerSecret = "xxt97EAmwhgQ06V7yKm9w7kqHhRxQXKrUhm4AvtfVrrhfWAQif"
+let authURL = "https://api.twitter.com/oauth2/token"
 
 
 class StackShape: UIView{
