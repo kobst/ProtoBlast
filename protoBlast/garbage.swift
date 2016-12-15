@@ -8,6 +8,76 @@
 
 import Foundation
 
+
+
+
+//this works....gets me the tweet with properties like .text
+
+//
+//        let client = TWTRAPIClient()
+//        client.loadTweet(withID: "20") { tweet, error in
+//            if let t = tweet {
+//                self.messageReader.text = t.text
+//            } else {
+//                print("Failed to load Tweet: \(error?.localizedDescription)")
+//            }
+//        }
+
+// this doesn't crash, but gives me a value TWTRUser....
+//
+//        let client = TWTRAPIClient()
+//        client.loadUser(withID: "201025452") {(user, error) in
+//            if let t = user {
+//                print(t)
+//                print("success")
+//            }
+//            else {
+//                print("failed")
+//            }
+//
+//        }
+
+
+//        let client = TWTRAPIClient()
+//        let dataSource = TWTRUserTimelineDataSource(screenName: "EatalyFlatiron", apiClient: client)
+
+
+
+
+
+// this works... gets me back a json with all info on the tweet
+
+//        let client = TWTRAPIClient()
+//        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/show.json"
+//        let params = ["id": "20"]
+//        var clientError : NSError?
+//
+//        let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
+//
+//        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+//            if connectionError != nil {
+//                print("Error: \(connectionError)")
+//            }
+//
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+//                print("json: \(json)")
+//            } catch let jsonError as NSError {
+//                print("json error: \(jsonError.localizedDescription)")
+//            }
+//        }
+//
+
+
+
+
+
+
+// for a user timeline with para "id" doesn't work...gives me an error. Where can I find what syntax I use for the parameters I want...
+
+
+
+
 //let logInButton = TWTRLogInButton { (session, error) in
 //    if let unwrappedSession = session {
 //        let alert = UIAlertController(title: "Logged In",

@@ -12,7 +12,7 @@
         <!--Test View Controller-->
         <scene sceneID="7bb-tq-mgJ">
             <objects>
-                <viewController id="daB-iM-QDt" customClass="testViewController" customModule="protoBlast" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="daB-iM-QDt" customClass="TestViewController" customModule="protoBlast" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oEM-rY-71S"/>
                         <viewControllerLayoutGuide type="bottom" id="tgQ-6O-6em"/>
@@ -35,6 +35,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4NR-4M-esi">
+                                <rect key="frame" x="296" y="41" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="setCornerRadius:" destination="daB-iM-QDt" eventType="touchUpInside" id="85k-qB-08D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -45,7 +53,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8n-UW-xb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-657" y="822"/>
+            <point key="canvasLocation" x="-1177" y="821"/>
+        </scene>
+        <!--Lab Test View Controller-->
+        <scene sceneID="7cl-ZO-oqZ">
+            <objects>
+                <viewController id="EOc-NZ-Fp9" customClass="LabTestViewController" customModule="protoBlast" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sc8-br-3EB"/>
+                        <viewControllerLayoutGuide type="bottom" id="XrW-hl-prk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gP0-3X-fFC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vPW-vT-N79">
+                                <rect key="frame" x="67" y="200" width="240" height="387"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="anotherView" destination="vPW-vT-N79" id="9SC-Ok-HER"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bhq-6i-KDZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-474" y="821"/>
         </scene>
     </scenes>
 </document>

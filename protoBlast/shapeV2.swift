@@ -1,4 +1,4 @@
-//
+
 //  shapeV2.swift
 //  protoBlast
 //
@@ -21,19 +21,30 @@ class ShapeV2: UIView {
     
     static var shapes = [ShapeV2]()
     
-    class func spawnBox(message: String, senderName: String, idImage: UIImage, dist: CGFloat, time: CGFloat, containingView: UIView) {
-        ShapeV2.shapes.append(ShapeV2(message: message, senderName: senderName, idImage: idImage, dist: dist, time: time, containingView: containingView))
+    class func spawnBox(message: String, senderName: String, idImage: UIImage, dist: CGFloat, time: CGFloat, containingView: UIView, setCornerRadius: Bool = false) {
+        let shape = ShapeV2(message: message, senderName: senderName, idImage: idImage, dist: dist, time: time, containingView: containingView, setCornerRadius: setCornerRadius)
+        shape.layer.cornerRadius = shape.layer.frame.size.width / 2
+        shape.layer.masksToBounds = true
+        ShapeV2.shapes.append(shape)
     }
     
     class func setCornerRadius() {
         for box in ShapeV2.shapes {
             box.layer.cornerRadius = box.layer.frame.size.width / 2
             box.layer.masksToBounds = true
+            print("SCR: \(box.frame, box.layer.cornerRadius)\n\n")
         }
+        
     }
     
     class func updateConstraints(xDelta: CGFloat, superV: UIView) {
-        for shape in ShapeV2.shapes { shape.setConstraints(xDelta: xDelta, superV: superV) }
+        for shape in ShapeV2.shapes {
+//            shape.containingView.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.deactivate(shape.superConstraints)
+////            removeConstraints(shape.superConstraints)
+            shape.setConstraints(xDelta: xDelta, superV: superV, initialized: true)
+        
+        }
          setCornerRadius()
     }
 
@@ -58,7 +69,7 @@ class ShapeV2: UIView {
         return [widthConstraint, squareConstraint, xConstraint, yConstraint]
     }
     
-    init(message: String, senderName: String, idImage: UIImage, dist: CGFloat, time: CGFloat, containingView: UIView) {
+    init(message: String, senderName: String, idImage: UIImage, dist: CGFloat, time: CGFloat, containingView: UIView, setCornerRadius: Bool = false) {
         
         messageField = UITextField()
         senderNameField = UILabel()
@@ -73,8 +84,12 @@ class ShapeV2: UIView {
         
         layer.borderWidth = 2
         layer.borderColor = UIColor.red.cgColor
-        layer.cornerRadius = self.layer.frame.size.width / 2
-        layer.masksToBounds = true
+        
+        
+        if setCornerRadius {
+            layer.cornerRadius = layer.frame.size.width / 2
+            layer.masksToBounds = true
+        }
         
         addSubview(idImageView)
         
@@ -94,15 +109,21 @@ class ShapeV2: UIView {
 
         containingView.addSubview(self)
         
-        setConstraints(xDelta: 0, superV: containingView)
+        setConstraints(xDelta: 0, superV: containingView, initialized: false)
         
     }
     
-    func setConstraints(xDelta: CGFloat, superV: UIView) {
+    func setConstraints(xDelta: CGFloat, superV: UIView, initialized: Bool) {
         
-        superV.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.deactivate(superConstraints)
-        removeConstraints(superConstraints)
+        // condition that doesn't always remove the previous constraints
+        
+        if initialized {
+            superV.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.deactivate(superConstraints)
+            removeConstraints(superConstraints)
+        }
+        
+
         
         let yX = CGFloat(self.time * 0.20)
         let widthX = CGFloat((-0.09375 * (dist + xDelta)) + 0.3075)
