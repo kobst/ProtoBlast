@@ -144,6 +144,9 @@ var coordinates: [String: CLLocationCoordinate2D] = [
 "UnionSqBarnesNoble": CLLocationCoordinate2D(latitude: 40.7369392, longitude: -73.9918239),
 "EatalyNYC": CLLocationCoordinate2D(latitude: 40.742164, longitude: 73.992088)
     
+    
+    
+    
 
 ]
 

@@ -11,6 +11,7 @@
 		844B75DF1E01E99A00401C4E /* LabTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B75DE1E01E99A00401C4E /* LabTestViewController.swift */; };
 		848C542E1DF7009B00F4B762 /* garbage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542D1DF7009B00F4B762 /* garbage.swift */; };
 		848C54301DF720BE00F4B762 /* shapeV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542F1DF720BE00F4B762 /* shapeV2.swift */; };
+		84E877391E06249700C9339F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E877381E06249700C9339F /* Model.swift */; };
 		84F2DD4F1DF079AC00AD45A7 /* StackedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */; };
 		84F3B93A1DD6951800C8D0F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */; };
 		84F3B93C1DD6951800C8D0F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B93B1DD6951800C8D0F0 /* ViewController.swift */; };
@@ -18,6 +19,8 @@
 		84F3B9411DD6951800C8D0F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B9401DD6951800C8D0F0 /* Assets.xcassets */; };
 		84F3B9441DD6951800C8D0F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B9421DD6951800C8D0F0 /* LaunchScreen.storyboard */; };
 		84F3B94C1DD6952A00C8D0F0 /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B94B1DD6952A00C8D0F0 /* data.swift */; };
+		84F95F0D1E039FE100C86210 /* Test3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95F0C1E039FE100C86210 /* Test3ViewController.swift */; };
+		84F95F0F1E03A1E700C86210 /* shapev3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95F0E1E03A1E700C86210 /* shapev3.swift */; };
 		AAB25392D87105A438CB3C64 /* Pods_protoBlast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E60277CA2CA864CD45A6DE /* Pods_protoBlast.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,7 @@
 		844B75DE1E01E99A00401C4E /* LabTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTestViewController.swift; sourceTree = "<group>"; };
 		848C542D1DF7009B00F4B762 /* garbage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = garbage.swift; sourceTree = "<group>"; };
 		848C542F1DF720BE00F4B762 /* shapeV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shapeV2.swift; sourceTree = "<group>"; };
+		84E877381E06249700C9339F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedShape.swift; sourceTree = "<group>"; };
 		84F3B9361DD6951800C8D0F0 /* protoBlast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = protoBlast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,8 @@
 		84F3B9431DD6951800C8D0F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F3B9451DD6951800C8D0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F3B94B1DD6952A00C8D0F0 /* data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		84F95F0C1E039FE100C86210 /* Test3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test3ViewController.swift; sourceTree = "<group>"; };
+		84F95F0E1E03A1E700C86210 /* shapev3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shapev3.swift; sourceTree = "<group>"; };
 		E9E60277CA2CA864CD45A6DE /* Pods_protoBlast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_protoBlast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,6 +67,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84E3D0A81E08E57200B5ADB7 /* garbage */ = {
+			isa = PBXGroup;
+			children = (
+				84F3B93B1DD6951800C8D0F0 /* ViewController.swift */,
+				8424532A1DF8AC1E002F057E /* TestViewController.swift */,
+				848C542F1DF720BE00F4B762 /* shapeV2.swift */,
+				84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */,
+				848C542D1DF7009B00F4B762 /* garbage.swift */,
+				844B75DE1E01E99A00401C4E /* LabTestViewController.swift */,
+			);
+			name = garbage;
+			sourceTree = "<group>";
+		};
 		84F3B92D1DD6951800C8D0F0 = {
 			isa = PBXGroup;
 			children = (
@@ -82,15 +101,13 @@
 		84F3B9381DD6951800C8D0F0 /* protoBlast */ = {
 			isa = PBXGroup;
 			children = (
+				84E3D0A81E08E57200B5ADB7 /* garbage */,
 				84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */,
-				84F3B93B1DD6951800C8D0F0 /* ViewController.swift */,
 				84F3B94B1DD6952A00C8D0F0 /* data.swift */,
-				84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */,
-				848C542F1DF720BE00F4B762 /* shapeV2.swift */,
-				8424532A1DF8AC1E002F057E /* TestViewController.swift */,
-				844B75DE1E01E99A00401C4E /* LabTestViewController.swift */,
+				84F95F0E1E03A1E700C86210 /* shapev3.swift */,
+				84F95F0C1E039FE100C86210 /* Test3ViewController.swift */,
+				84E877381E06249700C9339F /* Model.swift */,
 				84F3B93D1DD6951800C8D0F0 /* Main.storyboard */,
-				848C542D1DF7009B00F4B762 /* garbage.swift */,
 				84F3B9401DD6951800C8D0F0 /* Assets.xcassets */,
 				84F3B9421DD6951800C8D0F0 /* LaunchScreen.storyboard */,
 				84F3B9451DD6951800C8D0F0 /* Info.plist */,
@@ -247,9 +264,12 @@
 				8424532B1DF8AC1E002F057E /* TestViewController.swift in Sources */,
 				84F2DD4F1DF079AC00AD45A7 /* StackedShape.swift in Sources */,
 				848C542E1DF7009B00F4B762 /* garbage.swift in Sources */,
+				84F95F0F1E03A1E700C86210 /* shapev3.swift in Sources */,
 				844B75DF1E01E99A00401C4E /* LabTestViewController.swift in Sources */,
 				848C54301DF720BE00F4B762 /* shapeV2.swift in Sources */,
 				84F3B94C1DD6952A00C8D0F0 /* data.swift in Sources */,
+				84E877391E06249700C9339F /* Model.swift in Sources */,
+				84F95F0D1E039FE100C86210 /* Test3ViewController.swift in Sources */,
 				84F3B93A1DD6951800C8D0F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

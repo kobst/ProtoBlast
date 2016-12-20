@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="daB-iM-QDt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bm3-6D-LG2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -82,6 +84,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bhq-6i-KDZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-474" y="821"/>
+        </scene>
+        <!--Test3 View Controller-->
+        <scene sceneID="p1E-YH-Fnr">
+            <objects>
+                <viewController id="Bm3-6D-LG2" customClass="Test3ViewController" customModule="protoBlast" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fwv-gB-eYE"/>
+                        <viewControllerLayoutGuide type="bottom" id="HY9-gu-ejt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mlU-9Y-0pP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWo-kS-ZbU">
+                                <rect key="frame" x="16" y="20" width="343" height="1980"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecy-ZE-aCz" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="1312.5" height="7000"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ecy-ZE-aCz" firstAttribute="top" secondItem="VWo-kS-ZbU" secondAttribute="top" id="4bj-cV-9rj"/>
+                                    <constraint firstAttribute="bottom" secondItem="ecy-ZE-aCz" secondAttribute="bottom" id="RJf-fN-ari"/>
+                                    <constraint firstItem="ecy-ZE-aCz" firstAttribute="leading" secondItem="VWo-kS-ZbU" secondAttribute="leading" id="cAM-6H-GGn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ecy-ZE-aCz" secondAttribute="trailing" id="jIw-AI-zdR"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HY9-gu-ejt" firstAttribute="top" secondItem="VWo-kS-ZbU" secondAttribute="bottom" id="6Wh-QR-TVz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VWo-kS-ZbU" secondAttribute="trailing" id="DJX-ay-Jmc"/>
+                            <constraint firstItem="VWo-kS-ZbU" firstAttribute="leading" secondItem="mlU-9Y-0pP" secondAttribute="leadingMargin" id="Gig-73-LaZ"/>
+                            <constraint firstItem="VWo-kS-ZbU" firstAttribute="top" secondItem="fwv-gB-eYE" secondAttribute="bottom" id="KVK-Wx-Nnr"/>
+                            <constraint firstItem="ecy-ZE-aCz" firstAttribute="height" secondItem="mlU-9Y-0pP" secondAttribute="height" multiplier="3.5" priority="250" id="Uvk-Pb-PoQ"/>
+                            <constraint firstItem="ecy-ZE-aCz" firstAttribute="width" secondItem="mlU-9Y-0pP" secondAttribute="width" multiplier="3.5" priority="250" id="qj6-IJ-eA1"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="contentView" destination="ecy-ZE-aCz" id="Dh2-Lz-ZhA"/>
+                        <outlet property="scrollView" destination="VWo-kS-ZbU" id="FgR-fS-696"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AM1-Pw-FRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="605.60000000000002" y="816.34182908545733"/>
         </scene>
     </scenes>
 </document>
