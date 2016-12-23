@@ -13,8 +13,6 @@ import UIKit
 
 
 
-
-
 class ShapeV2: UIView {
     
 // MARK: CLASS Properties & Methods ----------------------------------------------------------
@@ -40,8 +38,8 @@ class ShapeV2: UIView {
     class func updateConstraints(xDelta: CGFloat, superV: UIView) {
         for shape in ShapeV2.shapes {
 //            shape.containingView.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.deactivate(shape.superConstraints)
-////            removeConstraints(shape.superConstraints)
+//            NSLayoutConstraint.deactivate(superConstraints)
+//            removeConstraints(superConstraints)
             shape.setConstraints(xDelta: xDelta, superV: superV, initialized: true)
         
         }

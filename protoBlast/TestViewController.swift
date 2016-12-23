@@ -186,9 +186,9 @@ class TestViewController: UIViewController, UIGestureRecognizerDelegate, CLLocat
             
         }
         
-        print("\n\n*************  View did fucking appear!  *************")
-        ShapeV2.setCornerRadius()
-        print("VDA: \(ShapeV2.shapes.last?.frame, ShapeV2.shapes.last?.layer.cornerRadius)\n\n")
+   
+        
+
     }
     
     override func didReceiveMemoryWarning() {

@@ -1,92 +1,84 @@
 //
-//  shapev3.swift
+//  shape4.swift
 //  protoBlast
 //
-//  Created by Edward Han on 12/15/16.
+//  Created by Edward Han on 12/20/16.
 //  Copyright © 2016 Edward Han. All rights reserved.
 //
 
 import Foundation
-import UIKit
-
-
 import Geometry
 
 
 
-class ShapeV3: UIView {
+
+
+
+class ShapeV4: UIView {
     
     // MARK: CLASS Properties & Methods ----------------------------------------------------------
     
-    static var shapes = [ShapeV3]()
+    static var shapes = [ShapeV4]()
     
-    
-    
-//    enum form: CGRect {
-//        case bubble = CGRect(x: dist, y: time, width: 30 , height: 30)
-//        case box = CGRect(x: contentEdge, y: self.time, width: 170, height: 100)
-//        }
-    
-    
-    enum form: CGRect {
-        case bubble = "20, 25, 100, 100"
-        case box = "0, 100, 200, 75"
+    enum ShapeType {
+        case bubble
+        case square
     }
     
     
- 
-    
-    
-    func makeBox(_ contentEdge: CGFloat) {
-        self.frame = CGRect(x: contentEdge, y: self.time, width: 170, height: 100)
-        self.layer.cornerRadius = self.layer.frame.size.width / 8
-        self.layer.masksToBounds = true
+    var type : ShapeType = .bubble {
+        didSet {
+            switch type {
+            case .bubble:
+                layer.frame =  CGRect(x: layer.frame.origin.x, y: layer.frame.origin.y, width: 30 , height: 30)
+                layer.cornerRadius = layer.frame.size.width / 2
+          
+            
+            case .square:
+                layer.cornerRadius = 0
+                let boxSize = CGSize(width: 120, height: 60)
+                layer.frame = CGRect(origin: layer.frame.origin, size: boxSize)
+            }
+        }
     }
     
-    class func spawnBox(message: String, senderName: String, idImage: UIImage, dist: CGFloat, time: CGFloat) -> ShapeV3 {
-        let shape = ShapeV3(message: message, senderName: senderName, idImage: idImage, dist: dist, time: time)
-        ShapeV3.shapes.append(shape)
+
+    
+    class func updateSize(shiftX: CGFloat) {
+        
+        
+        for shape in ShapeV4.shapes {
+            let deltaX = shape.dist - shiftX
+            let xFactor = (deltaX / -150) + 11/3
+//            print("\(xFactor)---------")
+           
+            if deltaX < 50 && deltaX > -20 {
+                shape.type = ShapeType.square
+            }
+                
+            else {
+                if shape.type == ShapeType.square {
+                    shape.type = ShapeType.bubble
+                    
+                }
+                shape.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
+    class func spawnBox(message: String, senderName: String, idImage: UIImage, dist: CGFloat, time: CGFloat) -> ShapeV4 {
+        let shape = ShapeV4(message: message, senderName: senderName, idImage: idImage, dist: dist, time: time)
+        ShapeV4.shapes.append(shape)
         return shape
     }
     
     
     
-    
-    class func updateSize(shiftX: CGFloat) {
-  
-        // setting the original size proportinal to dist
-//        let xfactor = (100 + shiftX) / 100
-//        for box in ShapeV3.shapes {
-//            box.transform = CGAffineTransform(scaleX: xfactor, y: xfactor)
-//        }
-//        
-
-//        
-        for shape in ShapeV3.shapes {
-            let deltaX = shape.dist - shiftX
-            
-            let xFactor = (deltaX / -150) + 11/3
-            
-            shape.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
-            
-//            if deltaX < 50 {
-//                shape.makeBox(shiftX)
-//            }
-            
-        }
-        
-        
-        
-    }
-    
-    class func setCornerRadius() {
-        for box in ShapeV2.shapes {
-            box.layer.cornerRadius = box.layer.frame.size.width / 2
-            box.layer.masksToBounds = true
-            print("SCR: \(box.frame, box.layer.cornerRadius)\n\n")
-        }
-        
-    }
     
     
     // MARK: INSTANCE Properties & Methods ----------------------------------------------------------
@@ -97,6 +89,8 @@ class ShapeV3: UIView {
     var idImageView: UIImageView
     var dist: CGFloat
     var time: CGFloat
+    
+
     
     private var origSize: CGFloat {
         let maxSize = CGFloat(110)
@@ -118,16 +112,17 @@ class ShapeV3: UIView {
         senderNameField.text = senderName
         self.dist = dist
         self.time = time
-      
-//        let sized = -0.38 * dist + 150.5
         
- //        super.init(frame: CGRect(x: dist, y: time, width: origSize, height: origSize))
-//        super.init(frame: CGRect(x: dist, y: time, width: CGFloat(sized), height: CGFloat(sized)))
-//
+        
+        //        let sized = -0.38 * dist + 150.5
+        //        super.init(frame: CGRect(x: dist, y: time, width: CGFloat(sized), height: CGFloat(sized)))
+        
+        
+        
+        //        super.init(frame: CGRect(x: dist, y: time, width: origSize, height: origSize))
+        
+        
         super.init(frame: CGRect(x: dist, y: time, width: 30 , height: 30))
-
-        
-  
         
         idImageView.frame = self.frame
         layer.borderWidth = 2
@@ -147,14 +142,14 @@ class ShapeV3: UIView {
         idImageView.contentMode = UIViewContentMode.scaleAspectFill
         
         
-
+        
         
         translatesAutoresizingMaskIntoConstraints = false
         
         autoresizesSubviews = true
         
         
-    
+        
         
         
         

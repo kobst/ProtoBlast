@@ -52,9 +52,9 @@ class Model {
                         let image = UIImage(data: responseData)
                         print("got data")
                         DispatchQueue.main.async {
-                            let randDist = CGFloat(arc4random()%350)
-                            let randTime = CGFloat(arc4random()%350)
-                            let shape = ShapeV3.spawnBox(message: messageText, senderName: "Eataly", idImage: image!, dist: randDist, time: randTime)
+                            let randDist = CGFloat(arc4random()%650)
+                            let randTime = CGFloat(arc4random()%650)
+                            _ = ShapeV3.spawnBox(message: messageText, senderName: "Eataly", idImage: image!, dist: randDist, time: randTime)
                         }
                         }.resume()
                 }
@@ -226,8 +226,8 @@ class Model {
                     let photoID = userDict["profile_image_url"] as! String
                     let messageText = tweetDict["text"] as! String
                     let photoURL = URL(string: photoID)!
-                    let randDist = CGFloat(arc4random()%350)
-                    let randTime = CGFloat(arc4random()%350)
+                    let randDist = CGFloat(arc4random()%650)
+                    let randTime = CGFloat(arc4random()%650)
                     let shape = ShapeV3.spawnBox(message: messageText, senderName: "Eataly", idImage: #imageLiteral(resourceName: "Image"), dist: randDist, time: randTime)
                     print("\(shape.messageField.text) .......................\(shape.dist)......")
                     dG.leave()
@@ -257,18 +257,254 @@ class Model {
         
         
     }
-
-
-    
-    
-    
-    
-    
-    
     
     
     
     }
+    
+    
+    
+    
+    
+    func getTweetMessageV4wShape4(senders: [String], closure: @escaping([ShapeV4]) -> ()) {
+        
+        let dG = DispatchGroup()
+        
+        
+        for sender in senders {
+            //            var photoURL: URL
+            //            var shape: ShapeV3
+            
+            let client = TWTRAPIClient()
+            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+            let params: [AnyHashable : Any] = [
+                "screen_name": sender,
+                "count": "1"
+            ]
+            
+            var clientError : NSError?
+            
+            let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
+            
+            dG.enter()
+            
+            client.sendTwitterRequest(request) { (response, data, connectionError) in
+                if connectionError != nil {
+                    print("Error: \(connectionError)")
+                }
+                guard let goodData = data else {
+                    print("no data")
+                    return}
+                do {
+                    let json = try JSONSerialization.jsonObject(with: goodData, options: .mutableContainers) as! [Any]
+                    
+                    let tweetDict = json[0] as! [String: Any]
+                    let userDict = tweetDict["user"] as! [String: Any]
+                    let photoID = userDict["profile_image_url"] as! String
+                    let messageText = tweetDict["text"] as! String
+                    let photoURL = URL(string: photoID)!
+                    let randDist = CGFloat(arc4random()%350)
+                    let randTime = CGFloat(arc4random()%350)
+                    let shape = ShapeV4.spawnBox(message: messageText, senderName: "Eataly", idImage: #imageLiteral(resourceName: "Image"), dist: randDist, time: randTime)
+                    print("\(shape.messageField.text) .......................\(shape.dist)......")
+                    dG.leave()
+                    
+                    DispatchQueue.global(qos: .utility).async {
+                        //                        sleep(5)
+                        URLSession.shared.dataTask(with: photoURL) { (data, _, _) in
+                            guard let responseData = data else { return }
+                            let image = UIImage(data: responseData)
+                            print("got image")
+                            DispatchQueue.main.async {
+                                shape.idImageView.image = image
+                            }}.resume()
+                    }
+                } catch let jsonError as NSError {print("json error: \(jsonError.localizedDescription)")}
+                
+                
+                
+                
+                
+                dG.notify(queue: .main){
+                    print("----------------------------------DONE DONE DONE")
+                    closure(ShapeV4.shapes)
+                }
+                
+            }
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    func getTweetMessageV5(senders: [String], closure: @escaping([Message]) -> ()) {
+        
+        let dG = DispatchGroup()
+        
+        
+        for sender in senders {
+            let client = TWTRAPIClient()
+            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+            let params: [AnyHashable : Any] = [
+                "screen_name": sender,
+                "count": "1"
+            ]
+            
+            var clientError : NSError?
+            
+            let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
+            
+            dG.enter()
+            
+            client.sendTwitterRequest(request) { (response, data, connectionError) in
+                if connectionError != nil {
+                    print("Error: \(connectionError)")
+                }
+                guard let goodData = data else {
+                    print("no data")
+                    return}
+                do {
+                    let json = try JSONSerialization.jsonObject(with: goodData, options: .mutableContainers) as! [Any]
+                    
+                    let tweetDict = json[0] as! [String: Any]
+                    let userDict = tweetDict["user"] as! [String: Any]
+                    let photoID = userDict["profile_image_url"] as! String
+                    let messageText = tweetDict["text"] as! String
+                    let photoURL = URL(string: photoID)!
+                    let randDist = CGFloat(arc4random()%350)
+                    let randTime = CGFloat(arc4random()%350)
+
+                    
+                    let fetched = Message(message: messageText, senderName: sender, idImage: #imageLiteral(resourceName: "Image"), dist: Double(randDist), time: Double(randTime))
+                    
+                    dG.leave()
+                    
+                    DispatchQueue.global(qos: .utility).async {
+                        //                        sleep(5)
+                        URLSession.shared.dataTask(with: photoURL) { (data, _, _) in
+                            guard let responseData = data else { return }
+                            let image = UIImage(data: responseData)
+                            DispatchQueue.main.async {
+                                fetched.idImage = image!
+                                fetched.formBubble?.idImageView.image = image!
+                                fetched.formBox?.idImageView.image = image!
+                            }}.resume()
+                    }
+                } catch let jsonError as NSError {print("json error: \(jsonError.localizedDescription)")}
+                
+
+                
+                dG.notify(queue: .main){
+                    print("----------------------------------DONE DONE DONE")
+                    closure(Message.all)
+                }
+                
+            }
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    ///
+    
+    
+    
+    func getTweetShapeV5(senders: [String], closure: @escaping([ShapeV5]) -> ()) {
+        
+        let dG = DispatchGroup()
+        
+        for sender in senders {
+            let client = TWTRAPIClient()
+            let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+            let params: [AnyHashable : Any] = [
+                "screen_name": sender,
+                "count": "1"
+            ]
+            
+            var clientError : NSError?
+            
+            let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
+            
+            dG.enter()
+            
+            client.sendTwitterRequest(request) { (response, data, connectionError) in
+                if connectionError != nil {
+                    print("Error: \(connectionError)")
+                }
+                guard let goodData = data else {
+                    print("no data")
+                    return}
+                do {
+                    let json = try JSONSerialization.jsonObject(with: goodData, options: .mutableContainers) as! [Any]
+                    
+                    let tweetDict = json[0] as! [String: Any]
+                    let userDict = tweetDict["user"] as! [String: Any]
+                    let photoID = userDict["profile_image_url"] as! String
+                    let messageText = tweetDict["text"] as! String
+                    let photoURL = URL(string: photoID)!
+                    let randDist = CGFloat(arc4random()%350)
+                    let randTime = CGFloat(arc4random()%350)
+                    
+                    
+                    let fetchedData = ShapeV5.MessageData(message: messageText, senderName: sender, idImage: #imageLiteral(resourceName: "Image"), dist: Double(randDist), time: Double(randTime))
+                    let fetchedShape = ShapeV5(message: fetchedData)
+                    
+                    
+                    dG.leave()
+                    
+                    DispatchQueue.global(qos: .utility).async {
+                        //                        sleep(5)
+                        URLSession.shared.dataTask(with: photoURL) { (data, _, _) in
+                            guard let responseData = data else { return }
+                            let image = UIImage(data: responseData)
+                            DispatchQueue.main.async {
+                                fetchedData.idImage = image!
+                                fetchedShape.idImageView.image = image!
+                            }}.resume()
+                    }
+                } catch let jsonError as NSError {print("json error: \(jsonError.localizedDescription)")}
+                
+                
+                
+                dG.notify(queue: .main){
+                    print("----------------------------------DONE DONE DONE")
+                    closure(ShapeV5.all)
+                }
+                
+            }
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    ///
+    
+    
+    
     
     
     

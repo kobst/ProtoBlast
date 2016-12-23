@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84244E731E0C1545006061A2 /* version2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84244E721E0C1545006061A2 /* version2.storyboard */; };
+		84244E751E0C15C1006061A2 /* test5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84244E741E0C15C1006061A2 /* test5ViewController.swift */; };
 		8424532B1DF8AC1E002F057E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424532A1DF8AC1E002F057E /* TestViewController.swift */; };
 		844B75DF1E01E99A00401C4E /* LabTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B75DE1E01E99A00401C4E /* LabTestViewController.swift */; };
+		84880DFF1E09D1990016DE2A /* shape4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84880DFE1E09D1990016DE2A /* shape4.swift */; };
 		848C542E1DF7009B00F4B762 /* garbage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542D1DF7009B00F4B762 /* garbage.swift */; };
 		848C54301DF720BE00F4B762 /* shapeV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542F1DF720BE00F4B762 /* shapeV2.swift */; };
 		84E877391E06249700C9339F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E877381E06249700C9339F /* Model.swift */; };
+		84EE14CC1E0B75B400467585 /* shape5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE14CB1E0B75B400467585 /* shape5.swift */; };
 		84F2DD4F1DF079AC00AD45A7 /* StackedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */; };
 		84F3B93A1DD6951800C8D0F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */; };
 		84F3B93C1DD6951800C8D0F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B93B1DD6951800C8D0F0 /* ViewController.swift */; };
@@ -27,11 +31,15 @@
 /* Begin PBXFileReference section */
 		300AD6080DDF093CA0FF39BD /* Pods-protoBlast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-protoBlast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-protoBlast/Pods-protoBlast.debug.xcconfig"; sourceTree = "<group>"; };
 		6FD3C44F66E8F41E10C321E6 /* Pods-protoBlast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-protoBlast.release.xcconfig"; path = "Pods/Target Support Files/Pods-protoBlast/Pods-protoBlast.release.xcconfig"; sourceTree = "<group>"; };
+		84244E721E0C1545006061A2 /* version2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = version2.storyboard; sourceTree = "<group>"; };
+		84244E741E0C15C1006061A2 /* test5ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = test5ViewController.swift; sourceTree = "<group>"; };
 		8424532A1DF8AC1E002F057E /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		844B75DE1E01E99A00401C4E /* LabTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTestViewController.swift; sourceTree = "<group>"; };
+		84880DFE1E09D1990016DE2A /* shape4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shape4.swift; sourceTree = "<group>"; };
 		848C542D1DF7009B00F4B762 /* garbage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = garbage.swift; sourceTree = "<group>"; };
 		848C542F1DF720BE00F4B762 /* shapeV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shapeV2.swift; sourceTree = "<group>"; };
 		84E877381E06249700C9339F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		84EE14CB1E0B75B400467585 /* shape5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shape5.swift; sourceTree = "<group>"; };
 		84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedShape.swift; sourceTree = "<group>"; };
 		84F3B9361DD6951800C8D0F0 /* protoBlast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = protoBlast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +84,9 @@
 				84F2DD4E1DF079AC00AD45A7 /* StackedShape.swift */,
 				848C542D1DF7009B00F4B762 /* garbage.swift */,
 				844B75DE1E01E99A00401C4E /* LabTestViewController.swift */,
+				84F95F0C1E039FE100C86210 /* Test3ViewController.swift */,
+				84F95F0E1E03A1E700C86210 /* shapev3.swift */,
+				84880DFE1E09D1990016DE2A /* shape4.swift */,
 			);
 			name = garbage;
 			sourceTree = "<group>";
@@ -104,9 +115,10 @@
 				84E3D0A81E08E57200B5ADB7 /* garbage */,
 				84F3B9391DD6951800C8D0F0 /* AppDelegate.swift */,
 				84F3B94B1DD6952A00C8D0F0 /* data.swift */,
-				84F95F0E1E03A1E700C86210 /* shapev3.swift */,
-				84F95F0C1E039FE100C86210 /* Test3ViewController.swift */,
+				84EE14CB1E0B75B400467585 /* shape5.swift */,
 				84E877381E06249700C9339F /* Model.swift */,
+				84244E721E0C1545006061A2 /* version2.storyboard */,
+				84244E741E0C15C1006061A2 /* test5ViewController.swift */,
 				84F3B93D1DD6951800C8D0F0 /* Main.storyboard */,
 				84F3B9401DD6951800C8D0F0 /* Assets.xcassets */,
 				84F3B9421DD6951800C8D0F0 /* LaunchScreen.storyboard */,
@@ -188,6 +200,7 @@
 			files = (
 				84F3B9441DD6951800C8D0F0 /* LaunchScreen.storyboard in Resources */,
 				84F3B9411DD6951800C8D0F0 /* Assets.xcassets in Resources */,
+				84244E731E0C1545006061A2 /* version2.storyboard in Resources */,
 				84F3B93F1DD6951800C8D0F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84880DFF1E09D1990016DE2A /* shape4.swift in Sources */,
 				84F3B93C1DD6951800C8D0F0 /* ViewController.swift in Sources */,
 				8424532B1DF8AC1E002F057E /* TestViewController.swift in Sources */,
 				84F2DD4F1DF079AC00AD45A7 /* StackedShape.swift in Sources */,
@@ -269,7 +283,9 @@
 				848C54301DF720BE00F4B762 /* shapeV2.swift in Sources */,
 				84F3B94C1DD6952A00C8D0F0 /* data.swift in Sources */,
 				84E877391E06249700C9339F /* Model.swift in Sources */,
+				84244E751E0C15C1006061A2 /* test5ViewController.swift in Sources */,
 				84F95F0D1E039FE100C86210 /* Test3ViewController.swift in Sources */,
+				84EE14CC1E0B75B400467585 /* shape5.swift in Sources */,
 				84F3B93A1DD6951800C8D0F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

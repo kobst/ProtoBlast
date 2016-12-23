@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import SpriteKit
 
 class Test3ViewController: UIViewController, UIScrollViewDelegate {
 
@@ -24,15 +25,21 @@ class Test3ViewController: UIViewController, UIScrollViewDelegate {
         view.backgroundColor = UIColor.black
         contentView.backgroundColor = UIColor.cyan
         scrollView.delegate = self
+        print("-------start--------")
+        
         
     }
 
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.x)
+//        print(scrollView.contentOffset.x)
         let deltaX = scrollView.contentOffset.x
         
-        ShapeV3.updateSize(shiftX: deltaX)
+        ShapeV4.updateSize(shiftX: deltaX)
+        
+      
+        
+
         
     }
     
@@ -52,27 +59,59 @@ class Test3ViewController: UIViewController, UIScrollViewDelegate {
         
 //MARK 
         
-        let senders = ["eatalyflatiron", "arsenal", "deadspin"]
+        let senders = ["eatalyflatiron", "arsenal", "deadspin", "mobute", "vice"]
 
-        let queue3 = DispatchQueue(label: "fetching", qos: .userInitiated)
+//        let queue3 = DispatchQueue(label: "fetching", qos: .userInitiated)
       
 //        
 //        Model.shared.getTweetMessageV2(sender: "eatalyflatiron")
         
         
-        Model.shared.getTweetMessageV4(senders: senders){responders in
+//        Model.shared.getTweetMessageV4(senders: senders){responders in
+//            for resp in responders {
+//                self.contentView.addSubview(resp)
+// 
+//                let xFactor = (resp.dist / -150) + 11/3
+//                
+//                resp.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
+//                
+//            }
+//        }
+        
+        
+        
+        Model.shared.getTweetMessageV4wShape4(senders: senders){responders in
             for resp in responders {
                 self.contentView.addSubview(resp)
- 
+                
                 let xFactor = (resp.dist / -150) + 11/3
                 
                 resp.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
+         
                 
             }
         }
         
+
         
 
+//        Model.shared.getTweetMessageV5(senders: senders){responders in
+//            for newMessage in responders {
+//                if newMessage.dist < 100 {
+////                    let newBox = Square(message: newMessage)
+//                    self.contentView.addSubview(newMessage.formBox!)
+//                }
+//                else {
+////                    let newView = Bubble(message: newMessage)
+//                    self.contentView.addSubview(newMessage.formBubble!)
+//                    
+//                }
+//            }
+//            
+//        }
+        
+        
+        
         
         
 //        queue3.asyncAfter(deadline: .now() + 5.0 ) {

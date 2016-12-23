@@ -7,6 +7,7 @@ target 'protoBlast' do
 
   pod 'Fabric'
   pod 'TwitterKit'
+  pod 'Geometry', '~> 3.0'
   # Pods for protoBlast
 
 end
