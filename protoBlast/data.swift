@@ -139,16 +139,26 @@ func fetchData(closure: @escaping (String) -> ()) {
 
 
 
-
-var coordinates: [String: CLLocationCoordinate2D] = [
-"UnionSqBarnesNoble": CLLocationCoordinate2D(latitude: 40.7369392, longitude: -73.9918239),
-"EatalyNYC": CLLocationCoordinate2D(latitude: 40.742164, longitude: 73.992088)
-    
-    
-    
-    
-
+let coordinates: [String: CLLocation] = [
+"UnionSqBarnesNoble": CLLocation(latitude: 40.7369392, longitude: -73.9918239),
+"eatalyflatiron": CLLocation(latitude: 40.742164, longitude: -73.992088),
+"UnionSquareNY": CLLocation(latitude: 40.7362512, longitude: -73.9946859),
+"MadSqParkNYC": CLLocation(latitude: 40.7420411, longitude: -73.9897575),
+"TimesSquareNYC": CLLocation(latitude: 40.758899, longitude: -73.987325),
+"sunshine_cinema": CLLocation(latitude: 40.7231256, longitude: -73.9921055),
+"IrvingPlaza" : CLLocation(latitude: 40.734933, longitude: -73.990642),
+"unionfarenyc": CLLocation(latitude: 40.737899, longitude: -73.993489),
+"highlinenyc" : CLLocation(latitude: 40.7479965, longitude: -74.0069589)
 ]
+
+
+
+
+
+
+
+
+
 
 
 
