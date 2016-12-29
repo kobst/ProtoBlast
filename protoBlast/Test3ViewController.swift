@@ -80,17 +80,17 @@ class Test3ViewController: UIViewController, UIScrollViewDelegate {
         
         
         
-        Model.shared.getTweetMessageV4wShape4(senders: senders){responders in
-            for resp in responders {
-                self.contentView.addSubview(resp)
-                
-                let xFactor = (resp.dist / -150) + 11/3
-                
-                resp.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
-         
-                
-            }
-        }
+//        Model.shared.getTweetMessageV4wShape4(senders: senders){responders in
+//            for resp in responders {
+//                self.contentView.addSubview(resp)
+//                
+//                let xFactor = (resp.dist / -150) + 11/3
+//                
+//                resp.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
+//         
+//                
+//            }
+//        }
         
 
         

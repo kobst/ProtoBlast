@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import CoreLocation
 
-let scaleback = CGFloat(52/15)
-
 
 class ShapeV5: UIView {
     
@@ -50,7 +48,7 @@ class ShapeV5: UIView {
         var inScreen = [ShapeV5]()
         for box in allSorted {
             let dist = CGFloat(box.frame.origin.x)
-            if dist - ShapeV5.contentShift < 400 && dist - ShapeV5.contentShift > -10 {
+            if (dist - ShapeV5.contentShift < 400) && (dist - ShapeV5.contentShift > -10) {
                         inScreen.append(box)
             }
         }
@@ -87,34 +85,6 @@ class ShapeV5: UIView {
     class func sortList(shiftX: CGFloat) {
         let buffer = CGFloat(5)
         var listLB = CGFloat(0)
-
-// just turns them into squares...
-        
-//        for box in ShapeV5.boxesSorted {
-//            box.frame.origin.x = shiftX
-//            if box.frame.origin.y < listY {
-//                box.frame.origin.y = listY
-//            }
-//            listY = box.frame.size.height + box.frame.origin.y + buffer
-//        }
-     
-// puts them in ordered list. bunch the bubbles together, stack the list..
-//        for box in ShapeV5.inScreen {
-//            if box.form == .box {
-//                box.frame.origin.x = shiftX
-//                if box.frame.origin.y < listLB {
-//                    box.frame.origin.y = listLB
-//                }
-//                listLB = box.frame.size.height + box.frame.origin.y + buffer
-//            }
-//            if box.form == .bubble {
-//                box.frame.origin.y = listLB
-//                listLB = box.frame.origin.y + buffer
-//            }
-//        }
-        
-        
-        
         var delta = CGFloat(0)
         for box in ShapeV5.inScreen {
             if box.form == .box {
@@ -141,14 +111,42 @@ class ShapeV5: UIView {
     }
 
     
-
+    // just turns them into squares...
+    
+    //        for box in ShapeV5.boxesSorted {
+    //            box.frame.origin.x = shiftX
+    //            if box.frame.origin.y < listY {
+    //                box.frame.origin.y = listY
+    //            }
+    //            listY = box.frame.size.height + box.frame.origin.y + buffer
+    //        }
+    
+    // puts them in ordered list. bunch the bubbles together, stack the list..
+    //        for box in ShapeV5.inScreen {
+    //            if box.form == .box {
+    //                box.frame.origin.x = shiftX
+    //                if box.frame.origin.y < listLB {
+    //                    box.frame.origin.y = listLB
+    //                }
+    //                listLB = box.frame.size.height + box.frame.origin.y + buffer
+    //            }
+    //            if box.form == .bubble {
+    //                box.frame.origin.y = listLB
+    //                listLB = box.frame.origin.y + buffer
+    //            }
+    //        }
+    
+    
+    
+    
+    
         
     
  
     class func updateSize(shiftX: CGFloat) {
         
         for shape in ShapeV5.all {
-            let deltaX = CGFloat(shape.message.dist) - shiftX
+            let deltaX = CGFloat(shape.originX) - shiftX
 //            let deltaX = CGFloat(shape.frame.origin.x) - shiftX....doens't change it back...
             
             if deltaX < 100 && deltaX > -50 {
@@ -219,7 +217,7 @@ class ShapeV5: UIView {
             subv.removeFromSuperview()
         }
         
-        layer.frame = CGRect(x: message.dist, y: message.time, width: 30, height: 30)
+        layer.frame = CGRect(x: originX, y: originY, width: 30, height: 30)
         
         idImageView.frame = self.frame
         layer.borderWidth = 2
@@ -283,16 +281,11 @@ class ShapeV5: UIView {
         
         messageField.attributedText = styledMessage
         senderID.attributedText = styledID
+    
         
-//        self.messageField.text = message.message
-//        self.senderID.text = message.senderID
 
-        // need formulat to translate dist/time to x/y coordinates.
-        
-        originX = CGFloat(message.dist)
-        originY = CGFloat(message.time)
-        
-       
+        originY = CGFloat(message.time / 100)
+        originX = CGFloat(message.dist * 200)
         
         super.init(frame: CGRect(x: originX, y: originY, width: 30 , height: 30))
         
@@ -319,6 +312,8 @@ class ShapeV5: UIView {
         
     }
     
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -344,6 +339,8 @@ class ShapeV5: UIView {
         }
         
     }
+    
+    
     
 }
 

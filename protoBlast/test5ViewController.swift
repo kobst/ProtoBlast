@@ -24,8 +24,6 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
     var myLocation = CLLocation(latitude: 40.7398516, longitude: -73.9924008)
     
     
-    var distMap: [(sender: String, dist: Double)] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +39,32 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
         
         
        
-        for (key, value) in coordinates {
-            let location = key
-            let dist = myLocation.distance(from: value)
-            let newDistMapTuple = (location, dist)
-            distMap.append(newDistMapTuple)
-        }
+//        for (key, value) in coordinates {
+//            let location = key
+//            let dist = myLocation.distance(from: value)
+//            let roundedDist = Double(round(dist)/1000)
+//            let newDistMapTuple = (location, roundedDist)
+//            distMap.append(newDistMapTuple)
+//        }
+//        
+//        let sortedDistMap = distMap.sorted(by: {$0.dist < $1.dist})
         
-        let sortedDistMap = distMap.sorted(by: {$0.dist < $1.dist})
+        
+        
+
+        
+//        for (x,y) in sortedDistMap {
+//            print("\(x)......sortedDistMap....\(y)")
+//        }
+        
+
+        
+
 
         
         
         
-        
-        
+    
         
         
     }
@@ -65,14 +75,21 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
         let contentDelta = scrollView.contentOffset.x
         
 //       Bubble.updateSize(shiftX: contentDelta)
+        ShapeV5.contentShift = contentDelta
+        
         ShapeV5.updateSize(shiftX: contentDelta)
         
         ShapeV5.sortList(shiftX: contentDelta)
         
         
-        ShapeV5.contentShift = contentDelta
+        for shape in ShapeV5.allSorted {
+            print("\(shape.message.senderID)..\(shape.originX)...\(shape.originY)....")
+        }
         
-        print("\(ShapeV5.contentShift)..CS.....\(ShapeV5.inScreen.count)...")
+ 
+        
+        
+
         
         
         
@@ -121,34 +138,17 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
-        let contentDelta = scrollView.contentOffset.x
-        ShapeV5.contentShift = contentDelta
-        ShapeV5.sortList(shiftX: contentDelta)
+//        let contentDelta = scrollView.contentOffset.x
+//        ShapeV5.contentShift = contentDelta
+//        ShapeV5.sortList(shiftX: contentDelta)
+//        
+//        
+//        
         
         
         
         
-        
-        
-        
-        for (key, value) in coordinates {
-            let location = key
-            let dist = myLocation.distance(from: value)
-            let newDistMapTuple = (location, dist)
-            distMap.append(newDistMapTuple)
-        }
-        
-        let sortedDistMap = distMap.sorted(by: {$0.dist < $1.dist})
-        
-        
-        for (x,y) in sortedDistMap {
-            print("\(x)......sortedDistMap....\(y)")
-        }
-        
-        
-        for tup in sortedDistMap {
-            print("\(tup.0)......sorttupppap....\(tup.1)")
-        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -187,10 +187,13 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
 //
 //...using w ShapeV5
 //        
-        Model.shared.getTweetShapeV5(senders: senders){responders in
+        Modelv2.shared.getTweetShapeV5(senders: senders){responders in
             for newMessage in responders {
                 self.contentView.addSubview(newMessage)
             }
+        }
+        
+            
             
 //            let test = UIImageView()
 //            test.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
@@ -203,14 +206,34 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
 //            
 //            self.view.addSubview(box2)
 //            
-//            ShapeV5.updateSize(shiftX: 0)
-//            ShapeV5.sortList(shiftX: 0)
+
             
             
+        
+        
+        
+        let sortedDistMap = Modelv2.shared.mapDistances(myLocation: myLocation)
+        
+        for (x,y) in sortedDistMap {
+            print(".....\(x).....DISTMAP.....\(y)......")
         }
         
 
-        let test2  = ShapeV5.MessageData(message: "is this working", senderName: "tester", idImage: #imageLiteral(resourceName: "Image"), dist: 200, time: 200)
+        Modelv2.shared.getTweetShapeV5_Tuple(senders: sortedDistMap) {responders in
+            for newMessage in responders {
+                print("\(newMessage.frame.origin.x).....\n......\n....ADDING SUBVIEWS")
+                self.contentView.addSubview(newMessage)
+            }
+        }
+
+
+        
+        //            ShapeV5.updateSize(shiftX: 0)
+        //            ShapeV5.sortList(shiftX: 0)
+        
+        
+        
+//        let test2  = ShapeV5.MessageData(message: "is this working", senderName: "tester", idImage: #imageLiteral(resourceName: "Image"), dist: 200, time: 200)
        
 
 
