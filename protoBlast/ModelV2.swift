@@ -129,7 +129,7 @@ class Modelv2{
         dateFormatter.dateFormat = "EEE MM dd HH:mm:ss Z yyyy"
         let now  = Date()
         let dG = DispatchGroup()
-        
+        print("tuple get initiated \n \n ........xxxXXXXxxxx...\n")
         for sender in senders {
             let client = TWTRAPIClient()
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
