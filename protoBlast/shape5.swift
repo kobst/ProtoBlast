@@ -191,11 +191,18 @@ class ShapeV5: UIView {
         layer.cornerRadius = layer.frame.size.width / 8
         layer.masksToBounds = true
         
+        
+        senderID.textAlignment = .center
+        senderID.backgroundColor = UIColor.cyan
+        
+        
         idImageView.frame = CGRect(x: 0, y: 0, width: layer.frame.width * 0.32, height: layer.frame.height * 0.66)
         
         messageField.frame = CGRect(x: layer.frame.width * 0.32, y: 0, width: layer.frame.width * 0.68, height: layer.frame.height)
         
-        senderID.frame = CGRect(x:0, y: layer.frame.height * 0.68, width: layer.frame.width * 0.32, height: layer.frame.height * 0.3)
+        senderID.frame = CGRect(x:0, y: layer.frame.height * 0.68, width: layer.frame.width, height: layer.frame.height * 0.3)
+        
+//        senderID.frame = CGRect(x:0, y: layer.frame.height * 0.68, width: layer.frame.width * 0.32, height: layer.frame.height * 0.3)
         
         idImageView.layer.cornerRadius = 5
         
@@ -243,13 +250,13 @@ class ShapeV5: UIView {
     
     //MARK CLass PROPERTIES
     
-    let messageStyle = [NSFontAttributeName: UIFont(name: "Chalkduster", size: 8.0)! ]
-    let idStyle = [NSFontAttributeName: UIFont(name: "Chalkduster", size: 12.0)! ]
+    let messageStyle = [NSFontAttributeName: UIFont(name: "Futura", size: 6.0)! ]
+    let idStyle = [NSFontAttributeName: UIFont(name: "Futura", size: 9.0)! ]
     
     
     var message: MessageData
     var idImageView = UIImageView()
-    var messageField = UITextField()
+    var messageField = UITextView()
     var senderID = UILabel()
     var originX = CGFloat()
     var originY = CGFloat()
@@ -284,8 +291,8 @@ class ShapeV5: UIView {
     
         
 
-        originY = CGFloat(message.time / 100)
-        originX = CGFloat(message.dist * 200)
+        originY = CGFloat(message.time / 60)
+        originX = CGFloat((message.dist * 200) + 100)
         
         super.init(frame: CGRect(x: originX, y: originY, width: 30 , height: 30))
         
@@ -294,6 +301,7 @@ class ShapeV5: UIView {
         layer.borderColor = UIColor.red.cgColor
         layer.cornerRadius = layer.frame.size.width / 2
         layer.masksToBounds = true
+        layer.zPosition = CGFloat(100.0 * message.dist * -1)
         
         idImageView.translatesAutoresizingMaskIntoConstraints = false
         idImageView.clipsToBounds = false

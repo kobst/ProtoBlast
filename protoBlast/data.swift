@@ -140,7 +140,7 @@ func fetchData(closure: @escaping (String) -> ()) {
 
 
 let coordinates: [String: CLLocation] = [
-"UnionSqBarnesNoble": CLLocation(latitude: 40.7369392, longitude: -73.9918239),
+"strandbookstore": CLLocation(latitude: 40.7332583, longitude: -73.9907914),
 "eatalyflatiron": CLLocation(latitude: 40.742164, longitude: -73.992088),
 "UnionSquareNY": CLLocation(latitude: 40.7362512, longitude: -73.9946859),
 "MadSqParkNYC": CLLocation(latitude: 40.7420411, longitude: -73.9897575),

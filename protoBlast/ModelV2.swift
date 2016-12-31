@@ -40,6 +40,7 @@ class Modelv2{
     
     
     func getTweetShapeV5(senders: [String], closure: @escaping([ShapeV5]) -> ()) {
+        
         dateFormatter.dateFormat = "EEE MM dd HH:mm:ss Z yyyy"
         let now  = Date()
         
@@ -126,10 +127,13 @@ class Modelv2{
     
     
     func getTweetShapeV5_Tuple(senders: [(String, Double)], closure: @escaping([ShapeV5]) -> ()) {
+        
         dateFormatter.dateFormat = "EEE MM dd HH:mm:ss Z yyyy"
         let now  = Date()
+        
         let dG = DispatchGroup()
-        print("tuple get initiated \n \n ........xxxXXXXxxxx...\n")
+        
+     
         for sender in senders {
             let client = TWTRAPIClient()
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
@@ -168,7 +172,7 @@ class Modelv2{
                     let messageText = tweetDict["text"] as! String
 
                     let photoURL = URL(string: photoID)!
-                    //                    let randDist = CGFloat(arc4random()%350)
+//                                        let randDist = CGFloat(arc4random()%350)
 //                    let randTime = CGFloat(arc4random()%350)
                     //                    let dist = sender.1
                     
@@ -179,7 +183,8 @@ class Modelv2{
                     
                     let fetchedShape = ShapeV5(message: fetchedData)
                     
-                     print("\(fetchedShape.message.senderID)..?????...\(fetchedShape.originX)....\(fetchedShape.frame.origin.x).....")
+
+                    print("made shape from tuple....\(fetchedData.message)")
                     
                     dG.leave()
                     
@@ -196,8 +201,7 @@ class Modelv2{
                 } catch let jsonError as NSError {print("json error: \(jsonError.localizedDescription)")}
                 
                 
-                
-                dG.notify(queue: .main){
+                dG.notify(queue: .main){    //  HOW TO send shapeV5.all even if all dg has not left, but a time has elapsed
                     print("done------ main queue")
                     closure(ShapeV5.all)
                 }

@@ -15,6 +15,7 @@
 		84880DFF1E09D1990016DE2A /* shape4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84880DFE1E09D1990016DE2A /* shape4.swift */; };
 		848C542E1DF7009B00F4B762 /* garbage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542D1DF7009B00F4B762 /* garbage.swift */; };
 		848C54301DF720BE00F4B762 /* shapeV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C542F1DF720BE00F4B762 /* shapeV2.swift */; };
+		84DABEEA1E15913700638FA9 /* Test5PreviousController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DABEE91E15913700638FA9 /* Test5PreviousController.swift */; };
 		84E673CF1E0D9325009A0377 /* 2classVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E673CE1E0D9325009A0377 /* 2classVersion.swift */; };
 		84E877391E06249700C9339F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E877381E06249700C9339F /* Model.swift */; };
 		84EE14CC1E0B75B400467585 /* shape5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE14CB1E0B75B400467585 /* shape5.swift */; };
@@ -41,6 +42,7 @@
 		84880DFE1E09D1990016DE2A /* shape4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shape4.swift; sourceTree = "<group>"; };
 		848C542D1DF7009B00F4B762 /* garbage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = garbage.swift; sourceTree = "<group>"; };
 		848C542F1DF720BE00F4B762 /* shapeV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shapeV2.swift; sourceTree = "<group>"; };
+		84DABEE91E15913700638FA9 /* Test5PreviousController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test5PreviousController.swift; sourceTree = "<group>"; };
 		84E673CE1E0D9325009A0377 /* 2classVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2classVersion.swift; sourceTree = "<group>"; };
 		84E877381E06249700C9339F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		84EE14CB1E0B75B400467585 /* shape5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shape5.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				84244E721E0C1545006061A2 /* version2.storyboard */,
 				84244E741E0C15C1006061A2 /* test5ViewController.swift */,
 				8430890B1E14942A0046516D /* ModelV2.swift */,
+				84DABEE91E15913700638FA9 /* Test5PreviousController.swift */,
 				84F3B93D1DD6951800C8D0F0 /* Main.storyboard */,
 				84F3B9401DD6951800C8D0F0 /* Assets.xcassets */,
 				84F3B9421DD6951800C8D0F0 /* LaunchScreen.storyboard */,
@@ -284,6 +287,7 @@
 				84F3B93C1DD6951800C8D0F0 /* ViewController.swift in Sources */,
 				8424532B1DF8AC1E002F057E /* TestViewController.swift in Sources */,
 				84F2DD4F1DF079AC00AD45A7 /* StackedShape.swift in Sources */,
+				84DABEEA1E15913700638FA9 /* Test5PreviousController.swift in Sources */,
 				848C542E1DF7009B00F4B762 /* garbage.swift in Sources */,
 				84F95F0F1E03A1E700C86210 /* shapev3.swift in Sources */,
 				844B75DF1E01E99A00401C4E /* LabTestViewController.swift in Sources */,
