@@ -11,6 +11,101 @@ import UIKit
 import CoreLocation
 
 
+class Plot: UIView {
+    static var all = [Plot]()
+    
+    class func update(deltaX: CGFloat, deltaY: CGFloat) {
+        for plot in Plot.all {
+            plot.frame.origin.x = plot.originX - deltaX/5
+            plot.frame.origin.y = plot.originY - deltaY/10
+            if plot.frame.origin.x < 0 || plot.frame.origin.y < 0 {
+                plot.isHidden = true
+            }
+            if plot.frame.origin.x > 0 && plot.frame.origin.y > 0 {
+                plot.isHidden = false
+            }
+        }
+    }
+    
+    var originX: CGFloat
+    var originY: CGFloat
+    
+    init(x: CGFloat, y: CGFloat) {
+        originX = x
+        originY = y
+        super.init(frame: CGRect(x: originX, y: originY, width: 5 , height: 5))
+        backgroundColor = UIColor.cyan
+        layer.cornerRadius = layer.frame.width / 2
+        Plot.all.append(self)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+//class Dashboard: UIView {
+//    
+//    func plotMap(deltaX: CGFloat, deltaY: CGFloat) {
+//   
+//        for shape in ShapeV5.allSorted {
+//            let rawY = shape.frame.origin.y - deltaY
+//            let rawX = shape.frame.origin.x - deltaX
+//            let plotY = rawY / 10
+//            let plotX = rawX / 10
+//            let mapPlot = Plot(x: plotX, y: plotY)
+//            self.addSubview(mapPlot)
+//        }
+//    }
+//    
+// 
+//    
+//    init(frame: CGRect, view: UIView) {
+//        super.init(frame: frame)
+//        self.setup(view: view)
+//        
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//    
+//    
+//    private func setup(view: UIView){
+//        self.translatesAutoresizingMaskIntoConstraints = false
+//        backgroundColor = UIColor.black
+//        clipsToBounds = true
+//        
+//        
+//    
+//    let horizontalConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+//    let verticalConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+//    let widthConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.width, multiplier: 1, constant: 100)
+//    let heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.height, multiplier: 0.08, constant: 100)
+//    
+//    view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+//    
+//    
+//     }
+//    
+//    
+//    
+//}
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
 class ShapeV5: UIView {
     
     enum Form {
@@ -104,23 +199,10 @@ class ShapeV5: UIView {
             
         }
         
-        
-        
-        
-        
     }
 
     
-    // just turns them into squares...
-    
-    //        for box in ShapeV5.boxesSorted {
-    //            box.frame.origin.x = shiftX
-    //            if box.frame.origin.y < listY {
-    //                box.frame.origin.y = listY
-    //            }
-    //            listY = box.frame.size.height + box.frame.origin.y + buffer
-    //        }
-    
+
     // puts them in ordered list. bunch the bubbles together, stack the list..
     //        for box in ShapeV5.inScreen {
     //            if box.form == .box {
@@ -149,7 +231,7 @@ class ShapeV5: UIView {
             let deltaX = CGFloat(shape.originX) - shiftX
 //            let deltaX = CGFloat(shape.frame.origin.x) - shiftX....doens't change it back...
             
-            if deltaX < 100 && deltaX > -50 {
+            if deltaX < 100 && deltaX > -100 {
                 if shape.form == .bubble {
                     shape.makeBox()
                 }
@@ -187,7 +269,7 @@ class ShapeV5: UIView {
         layer.frame = CGRect(x: layer.frame.origin.x, y: layer.frame.origin.y, width: 160, height: 70)
         
         layer.borderWidth = 2
-        layer.borderColor = UIColor.red.cgColor
+        layer.borderColor = outlineColor.cgColor
         layer.cornerRadius = layer.frame.size.width / 8
         layer.masksToBounds = true
         
@@ -195,6 +277,7 @@ class ShapeV5: UIView {
         senderID.textAlignment = .center
         senderID.backgroundColor = UIColor.cyan
         
+        messageField.backgroundColor = outlineColor
         
         idImageView.frame = CGRect(x: 0, y: 0, width: layer.frame.width * 0.32, height: layer.frame.height * 0.66)
         
@@ -228,7 +311,7 @@ class ShapeV5: UIView {
         
         idImageView.frame = self.frame
         layer.borderWidth = 2
-        layer.borderColor = UIColor.red.cgColor
+        layer.borderColor = outlineColor.cgColor
         layer.cornerRadius = layer.frame.size.width / 2
         layer.masksToBounds = true
         
@@ -246,12 +329,52 @@ class ShapeV5: UIView {
     }
     
     
+    func makeColor(per: Double) -> UIColor {
+        let color1red = Double(209/255)
+        let color1green = Double(15/255)
+        let color1blue = Double(60/255)
+        let color2red = Double(142/255)
+        let color2green = Double(190/255)
+        let color2blue = Double(210/255)
+
+        let resultRed = color1red + per * (color2red - color1red);
+        let resultGreen = color1green + per * (color2green - color1green);
+        let resultBlue = color1blue + per * (color2blue - color1blue);
+        
+        let result = UIColor(red: CGFloat(resultRed), green: CGFloat(resultGreen), blue: CGFloat(resultBlue), alpha: 1)
+        
+        return result
+        
+    }
+    
+
+    
+    func resizeImage(image: UIImage) -> UIImage {
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize = CGSize(width: 20, height: 20)
+  
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    
     
     
     //MARK CLass PROPERTIES
     
     let messageStyle = [NSFontAttributeName: UIFont(name: "Futura", size: 6.0)! ]
     let idStyle = [NSFontAttributeName: UIFont(name: "Futura", size: 9.0)! ]
+
     
     
     var message: MessageData
@@ -274,6 +397,36 @@ class ShapeV5: UIView {
          else {return nil}
     }
     
+    
+    var outlineColor: UIColor {
+        
+        let per = Double(originY / 500)
+//        let color1red = Double(209/255)
+//        let color1green = Double(15/255)
+//        let color1blue = Double(60/255)
+//        let color2red = Double(142/255)
+//        let color2green = Double(190/255)
+//        let color2blue = Double(210/255)
+        
+                let color1red = 209.0
+                let color1green = 15.0
+                let color1blue = 60.0
+                let color2red = 142.0
+                let color2green = 190.0
+                let color2blue = 210.0
+        
+        
+        
+        let resultRed = (color1red + per * (color2red - color1red))
+        let resultGreen = (color1green + per * (color2green - color1green))
+        let resultBlue = (color1blue + per * (color2blue - color1blue))
+        
+        let result = UIColor(red: CGFloat(resultRed/255), green: CGFloat(resultGreen/255), blue: CGFloat(resultBlue/255), alpha: 1)
+        
+        return result
+        
+    }
+    
     init(message: MessageData) {
         
         self.message = message
@@ -281,37 +434,46 @@ class ShapeV5: UIView {
 //        idImageView.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         idImageView.contentMode = UIViewContentMode.scaleAspectFit
         
-        idImageView.image = message.idImage
+//        idImageView.image = message.idImage
+        
+
+        
  
         let styledMessage = NSAttributedString(string: message.message, attributes: messageStyle)
         let styledID = NSAttributedString(string: message.senderID, attributes: idStyle)
         
         messageField.attributedText = styledMessage
         senderID.attributedText = styledID
-    
+      
         
-
-        originY = CGFloat(message.time / 60)
-        originX = CGFloat((message.dist * 200) + 100)
+//        originX = CGFloat((message.dist * 200.0)
+//        originY = CGFloat(message.time / 15.0)
         
-        super.init(frame: CGRect(x: originX, y: originY, width: 30 , height: 30))
         
-//        idImageView.frame = self.frame
+        originX = CGFloat(message.dist * 200)
+        originY = CGFloat(message.time / 15.0)
+        
+   
+        super.init(frame: CGRect(x: originX, y: originY, width: 30, height: 30))
+        
+        
         layer.borderWidth = 2
-        layer.borderColor = UIColor.red.cgColor
+        layer.borderColor = outlineColor.cgColor
         layer.cornerRadius = layer.frame.size.width / 2
         layer.masksToBounds = true
         layer.zPosition = CGFloat(100.0 * message.dist * -1)
-        
+        idImageView.frame = CGRect(x: 0, y: 0, width: layer.frame.width/2, height: layer.frame.height/2)
+        idImageView.image = resizeImage(image: message.idImage)
         idImageView.translatesAutoresizingMaskIntoConstraints = false
         idImageView.clipsToBounds = false
-        //        idImageView.center = center
+
+        
+        
+        
         idImageView.layer.masksToBounds = false
 
         
         addSubview(idImageView)
-        
-
 //
         translatesAutoresizingMaskIntoConstraints = false
         autoresizesSubviews = true
@@ -351,6 +513,7 @@ class ShapeV5: UIView {
     
     
 }
+
 
 
 

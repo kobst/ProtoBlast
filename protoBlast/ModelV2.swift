@@ -214,11 +214,49 @@ class Modelv2{
     
     
     
+
+    
+//    func plotMap() -> [Plot] {
+//        var plots = [Plot]()
+//        for shape in ShapeV5.allSorted {
+//            let rawY = shape.frame.origin.y
+//            let rawX = shape.frame.origin.x
+//            let plotY = rawY / 5
+//            let plotX = rawX / 5
+//            let mapPlot = Plot(x: plotX, y: plotY)
+//            plots.append(mapPlot)
+//        }
+//        return plots        
+//    }
+    
+    
+    
+    
+    
+    func plotMap(closure: @escaping ([Plot]) -> ()) {
+        var plots = [Plot]()
+        for shape in ShapeV5.allSorted {
+            let rawY = shape.frame.origin.y
+            let rawX = shape.frame.origin.x
+            let plotY = rawY / 10
+            let plotX = rawX / 5
+            let mapPlot = Plot(x: plotX, y: plotY)
+            plots.append(mapPlot)
+        }
+       closure(plots)
+    }
+    
+    
+    
+    
+        
+        
+        
+        
+    }
+    
     
     
 
     
     
-    
-
-}
