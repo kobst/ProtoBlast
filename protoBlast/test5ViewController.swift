@@ -11,8 +11,11 @@ import TwitterKit
 import CoreLocation
 
 
-class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate {
+class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
+    
+    
+
     
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -58,6 +61,12 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
         let heightConstraint = NSLayoutConstraint(item: map, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.height, multiplier: 0.15, constant: 0)
         
         view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        
+        
+//        let tap = UITapGestureRecognizer(target: self, action: Selector(("handleTap:")))
+//        tap.delegate = self
+//        view.addGestureRecognizer(tap)
+        
         
 //        view.addSubview(port)
         
@@ -112,6 +121,19 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
     
 
     
+    
+    func handleTap(_ sender: UITapGestureRecognizer) {
+    
+        let tappedMessage = sender.view as! ShapeV5
+        print(tappedMessage.frame.origin )
+        
+        
+        
+    }
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -137,8 +159,23 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
     
         Modelv2.shared.getTweetShapeV5_Tuple(senders: sortedDistMap){responders in
             for newMessage in responders {
-                print("\(newMessage.frame.origin.x).....\n....ADDING SUBVIEWS")
+//                print("\(newMessage.frame.origin.x).....\n....ADDING SUBVIEWS")
+                
+                
+                
+                newMessage.isUserInteractionEnabled = true
+                
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+
+                newMessage.addGestureRecognizer(tap)
+                
                 self.contentView.addSubview(newMessage)
+                
+                
+
+                
+                
+                
             }
             
             Modelv2.shared.plotMap{ plots in

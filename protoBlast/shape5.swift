@@ -451,7 +451,7 @@ class ShapeV5: UIView {
         
         
         originX = CGFloat(message.dist * 200)
-        originY = CGFloat(message.time / 15.0)
+        originY = CGFloat(message.time / 100.0)
         
    
         super.init(frame: CGRect(x: originX, y: originY, width: 30, height: 30))
