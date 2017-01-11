@@ -168,7 +168,10 @@ class Modelv2{
                     
                     let userDict = tweetDict["user"] as! [String: Any]
                     
-                    let photoID = userDict["profile_image_url"] as! String
+//                    let photoID = userDict["profile_image_url"] as! String
+                    
+                    let photoID = userDict["profile_image_url_https"] as! String
+                    
                     let messageText = tweetDict["text"] as! String
 
                     let photoURL = URL(string: photoID)!
@@ -247,6 +250,43 @@ class Modelv2{
     }
     
     
+    
+    
+    
+    let coordinates: [String: CLLocation] = [
+        "strandbookstore": CLLocation(latitude: 40.7332583, longitude: -73.9907914),
+        "eatalyflatiron": CLLocation(latitude: 40.742164, longitude: -73.992088),
+        "UnionSquareNY": CLLocation(latitude: 40.7362512, longitude: -73.9946859),
+        "MadSqParkNYC": CLLocation(latitude: 40.7420411, longitude: -73.9897575),
+        "TimesSquareNYC": CLLocation(latitude: 40.758899, longitude: -73.987325),
+        "sunshine_cinema": CLLocation(latitude: 40.7231256, longitude: -73.9921055),
+        "IrvingPlaza" : CLLocation(latitude: 40.734933, longitude: -73.990642),
+        "unionfarenyc": CLLocation(latitude: 40.737899, longitude: -73.993489),
+        "highlinenyc" : CLLocation(latitude: 40.7479965, longitude: -74.0069589),
+        "WSPConservancy": CLLocation(latitude: 40.7308228,longitude: -73.997332),
+        "RubinMuseum": CLLocation(latitude: 40.732294, longitude: -73.9998917),
+        "flightclub": CLLocation(latitude: 40.7324626, longitude: -73.999618),
+        "WebsterHall" : CLLocation(latitude: 40.7324626, longitude: -73.999618),
+        "vanguardjazz": CLLocation(latitude: 40.7324626, longitude: -73.999618),
+        "MorganLibrary": CLLocation(latitude: 40.7489914, longitude: -73.9949119),
+        "TheGarden": CLLocation(latitude: 40.7505085, longitude: -73.9956327),
+        "GothamComedy": CLLocation(latitude: 40.7443792, longitude: -73.9964206),
+        "burger_lobster": CLLocation(latitude: 40.7399067, longitude: -73.9942959),
+        "OttoPizzeria": CLLocation(latitude: 40.7321577, longitude: -73.9987826),
+        "lprnyc": CLLocation(latitude: 40.7254847, longitude: -74.0078584),
+        "MightyQuinnsBBQ": CLLocation(latitude: 40.7270126, longitude: -73.9851812),
+        "BaohausNYC": CLLocation(latitude: 40.734478, longitude: -73.9880487),
+        "thespottedpig": CLLocation(latitude: 40.7316653, longitude: -74.0085412),
+        "thebeannyc": CLLocation(latitude: 40.7246695, longitude: -73.9901214),
+        "UnleashedPetco": CLLocation(latitude: 40.716145, longitude: -74.012408),
+        "MercuryLoungeNY": CLLocation(latitude: 40.7451645,longitude: -73.9803567),
+        "FriedmansNYC": CLLocation(latitude: 40.7451998, longitude: -73.995726),
+        "Tekserve": CLLocation(latitude: 40.7434809, longitude: -73.995594),
+        "Almond_NYC": CLLocation(latitude: 40.740085, longitude: -73.9909449),
+        "BarnJoo": CLLocation(latitude: 40.7388458, longitude: -73.9922692),
+        "milkbarstore": CLLocation(latitude: 40.7319039, longitude: -73.9879422),
+        "BNUnionSquareNY": CLLocation(latitude: 40.7369432, longitude: -73.9918239)
+    ]
     
     
         

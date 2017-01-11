@@ -11,12 +11,16 @@ import TwitterKit
 import CoreLocation
 
 
+// uiviewtransitioningdelegate
+//uiviewcontroller animated transitioning....from 0.5, 0.5 of tappedmEssage to 0.5, 0.5 containerView.frame.width/2 containerView.frame.height/2 **container view not contentView...
+
+// on tap, call segue....in prepare for segue, case 'todetail' then segueSource is self.viewcontroller
+
 class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
+    var windowSize = UIScreen.main.bounds
     
-    
-
-    
+    var tappedShape: ShapeV5?
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -32,7 +36,7 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
     var locationManager = CLLocationManager()
     var myLocation = CLLocation(latitude: 40.7398516, longitude: -73.9924008)
     
-    
+//    let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +99,7 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
         let contentDeltaY = scrollView.contentOffset.y
         
         
-        
+        print("scrolling....")
 //       Bubble.updateSiztae(shiftX: contentDelta)
         ShapeV5.contentShift = contentDeltaX
         
@@ -121,17 +125,82 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
     
 
     
-    
-    func handleTap(_ sender: UITapGestureRecognizer) {
-    
-        let tappedMessage = sender.view as! ShapeV5
-        print(tappedMessage.frame.origin )
+    func exitTap(_ sender: UITapGestureRecognizer) {
         
+        let contentDeltaX = scrollView.contentOffset.x
+        print("\(contentDeltaX)....exitTap...")
+        let tappedMessage = sender.view as! ShapeV5
+//        let tappedMessage = tappedButton?.superview as! ShapeV5
+        print(tappedMessage.message.senderID)
+        
+        tappedMessage.makeBox()
+        
+        
+        
+        tappedMessage.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tappedMessage.addGestureRecognizer(tap)
+        
+        
+        
+        ShapeV5.sortList(shiftX: contentDeltaX)
         
         
     }
     
     
+    func handleTap(_ sender: UITapGestureRecognizer) {
+    
+        let tappedMessage = sender.view as! ShapeV5
+        if tappedMessage.form == .bubble {
+            return
+        }
+        
+        else {
+            let contentDeltaX = scrollView.contentOffset.x
+            let contentDeltaY = scrollView.contentOffset.y
+            
+            tappedMessage.makeDetail(shiftX: contentDeltaX, shiftY: contentDeltaY, superView: view)
+            
+            for shape in ShapeV5.all {
+                shape.isUserInteractionEnabled = false
+            }
+            
+            tappedMessage.isUserInteractionEnabled = true
+
+    
+            let exitTap = UITapGestureRecognizer(target: self, action: #selector(self.exitTap(_:)))
+            tappedMessage.addGestureRecognizer(exitTap)
+            
+//            for shape in ShapeV5.all {
+//                shape.isUserInteractionEnabled = true
+//            }
+            
+            
+            
+        }
+    }
+    
+    
+    func handleTap2(_ sender: UITapGestureRecognizer) {
+        tappedShape = sender.view as! ShapeV5
+        if tappedShape?.form == .bubble {
+            return
+        }
+            
+        else {
+            performSegue(withIdentifier: "toDetail", sender: nil)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            if let destinationVC = segue.destination as? DetailViewController {
+                destinationVC.detailShape = tappedShape
+            }
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -152,7 +221,7 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
 //            }
 //        }
         
-        
+       
         
         let sortedDistMap = Modelv2.shared.mapDistances(myLocation: myLocation)
 
@@ -164,19 +233,21 @@ class Test5ViewController: UIViewController, UIScrollViewDelegate, CLLocationMan
                 
                 
                 newMessage.isUserInteractionEnabled = true
-                
-                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap2(_:)))
                 newMessage.addGestureRecognizer(tap)
                 
+    
                 self.contentView.addSubview(newMessage)
                 
                 
-
-                
-                
-                
             }
+            
+            ShapeV5.updateSize(shiftX: 0)
+            
+            ShapeV5.sortList(shiftX: 0)
+            
+            
+
             
             Modelv2.shared.plotMap{ plots in
                 for plot in plots {

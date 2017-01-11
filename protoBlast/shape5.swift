@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import MapKit
 
 
 class Plot: UIView {
@@ -96,6 +97,36 @@ class Plot: UIView {
 //
 
 
+//class MapDetail: MKMapView {
+//    
+//    init(frame: CGRect, origin: CLLocation, place: CLLocation) {
+//    
+//        let latitude: CLLocationDegrees = 27.1
+//        
+//        let longitude: CLLocationDegrees = 78.0
+//        
+//        let lanDelta: CLLocationDegrees = 0.05
+//        
+//        let lonDelta: CLLocationDegrees = 0.05
+//        
+//        let span = MKCoordinateSpan(latitudeDelta: lanDelta, longitudeDelta: lonDelta)
+//        
+//        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//        
+//        let region = MKCoordinateRegion(center: coordinates, span: span)
+//        
+//        setRegion(region, animated: true)
+//
+//        
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//}
+
+
 
 
 
@@ -111,6 +142,7 @@ class ShapeV5: UIView {
     enum Form {
         case bubble
         case box
+        case detail
     }
     
     static var contentShift: CGFloat = 0
@@ -244,6 +276,7 @@ class ShapeV5: UIView {
                 }
                 let xFactor = (deltaX / -160) + 3
                 shape.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
+
             }
         }
         
@@ -261,7 +294,7 @@ class ShapeV5: UIView {
         
 //        self.transform = CGAffineTransform(scaleX: scaleback, y: scaleback)
         self.transform = CGAffineTransform.identity
-        
+    
         for subv in self.subviews {
             subv.removeFromSuperview()
         }
@@ -292,7 +325,7 @@ class ShapeV5: UIView {
         self.addSubview(idImageView)
         self.addSubview(messageField)
         self.addSubview(senderID)
-        
+    
 
     }
     
@@ -322,11 +355,132 @@ class ShapeV5: UIView {
         idImageView.center = center
         idImageView.layer.masksToBounds = true
         idImageView.contentMode = UIViewContentMode.scaleAspectFill
+
         
         translatesAutoresizingMaskIntoConstraints = false
         autoresizesSubviews = true
         
     }
+    
+    
+    func makeDetail(shiftX: CGFloat, shiftY: CGFloat, superView: UIView) {
+        
+        form = .detail
+        
+        for subv in self.subviews {
+            subv.removeFromSuperview()
+        }
+        
+        
+        self.backgroundColor = UIColor.black
+    
+        layer.borderWidth = 2
+        layer.borderColor = outlineColor.cgColor
+        layer.cornerRadius = layer.frame.size.width / 8
+        layer.masksToBounds = true
+        
+        
+        let map = MKMapView()
+        
+        let locationDestination = Modelv2.shared.coordinates[message.senderID]
+        let userLocation = CLLocation(latitude: 40.7398516, longitude: -73.9924008)
+        
+        let x = (userLocation.coordinate.latitude + (locationDestination?.coordinate.latitude)!) / 2
+        let y = (userLocation.coordinate.longitude + (locationDestination?.coordinate.longitude)!) / 2
+        
+        let latitude: CLLocationDegrees = x
+        
+        let longitude: CLLocationDegrees = y
+        
+        let lanDelta: CLLocationDegrees = 0.0005
+        
+        let lonDelta: CLLocationDegrees = 0.0005
+        
+        let span = MKCoordinateSpan(latitudeDelta: lanDelta, longitudeDelta: lonDelta)
+        
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        let region = MKCoordinateRegion(center: center, span: span)
+        
+        map.setRegion(region, animated: true)
+        
+        
+        senderID.textAlignment = .center
+        senderID.backgroundColor = UIColor.cyan
+        messageField.backgroundColor = outlineColor
+        
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        autoresizesSubviews = true
+        
+        
+
+        
+        idImageView.frame = CGRect(x: 0, y: 0, width: layer.frame.width * 0.15, height: layer.frame.height * 0.08)
+        
+        messageField.frame = CGRect(x: layer.frame.width * 0.10, y: layer.frame.height * 0.08, width: layer.frame.width * 0.8, height: layer.frame.height * 0.2)
+        
+        senderID.frame = CGRect(x: layer.frame.width * 0.18, y: 0, width: layer.frame.width * 0.75, height: layer.frame.height * 0.1)
+        
+        map.frame = CGRect(x: 0, y: layer.frame.height * 0.65, width: layer.frame.width, height: layer.frame.height * 0.35)
+        
+        
+        
+        self.addSubview(idImageView)
+        self.addSubview(messageField)
+        self.addSubview(senderID)
+        self.addSubview(map)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.3, options: [.curveEaseIn], animations: {
+            
+            superView.layoutIfNeeded()
+            
+            //            self.frame = CGRect(x: shiftX + (superView.frame.size.width * 0.1), y: shiftY + 10, width: superView.frame.size.width * 0.8, height: superView.frame.size.height * 0.65)
+            
+            self.frame = CGRect(x: shiftX, y: shiftY, width: superView.frame.size.width, height: superView.frame.size.height * 0.75)
+            
+            
+            self.layer.zPosition = 100
+            
+        }, completion: { complete in
+            
+            self.backgroundColor = UIColor.cyan
+//            self.idImageView.frame = CGRect(x: 0, y: 0, width: self.layer.frame.width * 0.15, height: self.layer.frame.height * 0.08)
+//        
+//            
+//            self.messageField.frame = CGRect(x: self.layer.frame.width * 0.10, y: self.layer.frame.height * 0.08, width: self.layer.frame.width * 0.8, height: self.layer.frame.height * 0.2)
+//            
+//            self.senderID.frame = CGRect(x: self.layer.frame.width * 0.18, y: 0, width: self.layer.frame.width * 0.75, height: self.layer.frame.height * 0.1)
+//            
+//            map.frame = CGRect(x: 0, y: self.layer.frame.height * 0.65, width: self.layer.frame.width, height: self.layer.frame.height * 0.35)
+//            
+//            
+//            self.addSubview(
+//                self.idImageView)
+//            self.addSubview(self.messageField)
+//            self.addSubview(self.senderID)
+//            self.addSubview(map)
+            
+            
+        })
+
+        
+//        print(superView.frame)
+//        
+//        self.removeFromSuperview()
+//        
+//        superView.addSubview(self)
+        
+//        let horizontalConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: superView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+//        let verticalConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: superView, attribute: NSLayoutAttribute.top, multiplier: 1.1, constant: 0)
+//        let widthConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: superView, attribute: NSLayoutAttribute.width, multiplier: 0.85, constant: 0)
+//        let heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: superView, attribute: NSLayoutAttribute.height, multiplier: 0.65, constant: 0)
+//        
+//        superView.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+
+    
+    }
+    
     
     
     func makeColor(per: Double) -> UIColor {
@@ -349,23 +503,22 @@ class ShapeV5: UIView {
     
 
     
-    func resizeImage(image: UIImage) -> UIImage {
-        
-        // Figure out what our orientation is, and use that to form the rectangle
-        var newSize = CGSize(width: 20, height: 20)
-  
-        
-        // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
-        
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
-    }
+//    func resizeImage(image: UIImage) -> UIImage {
+//        
+//        // Figure out what our orientation is, and use that to form the rectangle
+//        let newSize = CGSize(width: 20, height: 20)
+//        
+//        // This is the rect that we've calculated out and this is what is actually used below
+//        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
+//        
+//        // Actually do the resizing to the rect using the ImageContext stuff
+//        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+//        image.draw(in: rect)
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        
+//        return newImage!
+//    }
     
     
     
@@ -437,8 +590,6 @@ class ShapeV5: UIView {
 //        idImageView.image = message.idImage
         
 
-        
- 
         let styledMessage = NSAttributedString(string: message.message, attributes: messageStyle)
         let styledID = NSAttributedString(string: message.senderID, attributes: idStyle)
         
@@ -454,7 +605,7 @@ class ShapeV5: UIView {
         originY = CGFloat(message.time / 100.0)
         
    
-        super.init(frame: CGRect(x: originX, y: originY, width: 30, height: 30))
+        super.init(frame: CGRect(x: originX, y: originY, width: 20, height: 20))
         
         
         layer.borderWidth = 2
@@ -463,20 +614,20 @@ class ShapeV5: UIView {
         layer.masksToBounds = true
         layer.zPosition = CGFloat(100.0 * message.dist * -1)
         idImageView.frame = CGRect(x: 0, y: 0, width: layer.frame.width/2, height: layer.frame.height/2)
-        idImageView.image = resizeImage(image: message.idImage)
+//        idImageView.image = resizeImage(image: message.idImage)
         idImageView.translatesAutoresizingMaskIntoConstraints = false
         idImageView.clipsToBounds = false
 
         
         
         
-        idImageView.layer.masksToBounds = false
+        idImageView.layer.masksToBounds = true
 
         
         addSubview(idImageView)
 //
         translatesAutoresizingMaskIntoConstraints = false
-        autoresizesSubviews = true
+        autoresizesSubviews = false
         
         ShapeV5.all.append(self)
         
