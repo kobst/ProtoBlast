@@ -9,7 +9,14 @@
 import UIKit
 import MapKit
 
-class DetailViewController: UIViewController {
+
+protocol DetailProtocol: class {
+    
+    func fillDetails(detailShape: ShapeV5)
+}
+
+
+class DetailViewController: UIViewController, DetailProtocol {
     
     var detailShape: ShapeV5!
 
@@ -27,11 +34,9 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var messageField: UITextView!
     
+
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    func fillDetails(detailShape: ShapeV5) {
         
         let userLocation = CLLocation(latitude: 40.7398516, longitude: -73.9924008)
         
@@ -39,7 +44,6 @@ class DetailViewController: UIViewController {
         
         let x = (userLocation.coordinate.latitude + (destinationCoordinate?.coordinate.latitude)!) / 2
         let y = (userLocation.coordinate.longitude + (destinationCoordinate?.coordinate.longitude)!) / 2
-        
         
         let latitude: CLLocationDegrees = x
         
@@ -57,19 +61,47 @@ class DetailViewController: UIViewController {
         
         mapView.setRegion(region, animated: true)
         
-        
-        
-        
-        
         senderName.text = detailShape.message.senderID
         imageProfile.image = detailShape.message.idImage
         messageField.text = detailShape.message.message
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        imageProfile.layer.cornerRadius = imageProfile.layer.frame.width / 2
+        
+        
+        fillDetails(detailShape: detailShape)
         
         
         
+
     }
 
+    
+    @IBAction func exit(_ sender: Any) {
+        
+        if let navControl = self.navigationController {
+//            navControl.popToRootViewController(animated: true)
+            
+                navControl.popViewController(animated: true)
+        }
+    }
+ 
+    
+    
+    
+//    @IBAction func exit(_ sender: Any) {
+//        
+//        self.navigationController?.popToRootViewController(animated: true)
+//    }
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

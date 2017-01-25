@@ -11,46 +11,46 @@ import UIKit
 import CoreLocation
 import MapKit
 
-
-class Plot: UIView {
-    static var all = [Plot]()
-    
-    class func update(deltaX: CGFloat, deltaY: CGFloat) {
-        for plot in Plot.all {
-            plot.frame.origin.x = plot.originX - deltaX/5
-            plot.frame.origin.y = plot.originY - deltaY/10
-            if plot.frame.origin.x < 0 || plot.frame.origin.y < 0 {
-                plot.isHidden = true
-            }
-            if plot.frame.origin.x > 0 && plot.frame.origin.y > 0 {
-                plot.isHidden = false
-            }
-        }
-    }
-    
-    var originX: CGFloat
-    var originY: CGFloat
-    
-    init(x: CGFloat, y: CGFloat) {
-        originX = x
-        originY = y
-        super.init(frame: CGRect(x: originX, y: originY, width: 5 , height: 5))
-        backgroundColor = UIColor.cyan
-        layer.cornerRadius = layer.frame.width / 2
-        Plot.all.append(self)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-
-
+//
+//class Plot: UIView {
+//    static var all = [Plot]()
+//    
+//    class func update(deltaX: CGFloat, deltaY: CGFloat) {
+//        for plot in Plot.all {
+//            plot.frame.origin.x = plot.originX - deltaX/5
+//            plot.frame.origin.y = plot.originY - deltaY/10
+//            if plot.frame.origin.x < 0 || plot.frame.origin.y < 0 {
+//                plot.isHidden = true
+//            }
+//            if plot.frame.origin.x > 0 && plot.frame.origin.y > 0 {
+//                plot.isHidden = false
+//            }
+//        }
+//    }
+//    
+//    var originX: CGFloat
+//    var originY: CGFloat
+//    
+//    init(x: CGFloat, y: CGFloat) {
+//        originX = x
+//        originY = y
+//        super.init(frame: CGRect(x: originX, y: originY, width: 5 , height: 5))
+//        backgroundColor = UIColor.cyan
+//        layer.cornerRadius = layer.frame.width / 2
+//        Plot.all.append(self)
+//    }
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
+//
+//
 
 
 
-class ShapeV5: UIView {
+
+
+class CircleV1: UIView {
     
     enum Form {
         case bubble
@@ -60,23 +60,23 @@ class ShapeV5: UIView {
     
     static var contentShift: CGFloat = 0
     
-    static var all = [ShapeV5]()
+    static var all = [CircleV1]()
     
-    static var allSorted: [ShapeV5] {
+    static var allSorted: [CircleV1] {
         return all.sorted(by: {$0.message.time < $1.message.time})
     }
     
-    static var distSorted: [ShapeV5] {
+    static var distSorted: [CircleV1] {
         return all.sorted(by: {$0.message.dist < $1.message.dist})
     }
     
-    static var boxesSorted: [ShapeV5] {
+    static var boxesSorted: [CircleV1] {
         return allSorted.filter{$0.form == .box}
     }
     
     static var boxIndex: [Int] {
         var index = [Int]()
-        for box in ShapeV5.boxesSorted {
+        for box in CircleV1.boxesSorted {
             index.append(box.pos)
         }
         return index
@@ -84,18 +84,18 @@ class ShapeV5: UIView {
     
     
     
-    static var inScreen: [ShapeV5] {
-        var inScreen = [ShapeV5]()
+    static var inScreen: [CircleV1] {
+        var inScreen = [CircleV1]()
         for box in allSorted {
             let dist = CGFloat(box.frame.origin.x)
-            if (dist - ShapeV5.contentShift < 400) && (dist - ShapeV5.contentShift > -10) {
-                        inScreen.append(box)
+            if (dist - CircleV1.contentShift < 400) && (dist - CircleV1.contentShift > -10) {
+                inScreen.append(box)
             }
         }
         return inScreen
     }
     
-
+    
     
     
     
@@ -103,7 +103,7 @@ class ShapeV5: UIView {
         let buffer = CGFloat(5)
         var listLB = CGFloat(0)
         var delta = CGFloat(0)
-        for box in ShapeV5.inScreen {
+        for box in CircleV1.inScreen {
             if box.form == .box {
                 box.frame.origin.x = shiftX
                 if box.originY < listLB {
@@ -122,17 +122,17 @@ class ShapeV5: UIView {
         }
         
     }
-
     
-
-        
     
- 
+    
+    
+    
+    
     class func updateSize(shiftX: CGFloat) {
         
-        for shape in ShapeV5.all {
+        for shape in CircleV1.all {
             let deltaX = CGFloat(shape.originX) - shiftX
-//            let deltaX = CGFloat(shape.frame.origin.x) - shiftX....doens't change it back...
+            //            let deltaX = CGFloat(shape.frame.origin.x) - shiftX....doens't change it back...
             
             if deltaX < 100 && deltaX > -100 {
                 if shape.form == .bubble {
@@ -142,18 +142,18 @@ class ShapeV5: UIView {
             else {
                 if shape.form == .box {
                     shape.makeBubble()
-//                    shape.frame.size.width = shape.frame.size.width * xFactor
-//                    shape.frame.size.height = shape.frame.size.height * xFactor
+                    //                    shape.frame.size.width = shape.frame.size.width * xFactor
+                    //                    shape.frame.size.height = shape.frame.size.height * xFactor
                 }
                 let xFactor = (deltaX / -160) + 3
                 shape.transform = CGAffineTransform(scaleX: xFactor, y: xFactor)
-//                shape.frame.size.width = shape.frame.size.width * xFactor
-//                shape.frame.size.height = shape.frame.size.height * xFactor
-
+                //                shape.frame.size.width = shape.frame.size.width * xFactor
+                //                shape.frame.size.height = shape.frame.size.height * xFactor
+                
             }
         }
         
-
+        
         
     }
     
@@ -161,13 +161,13 @@ class ShapeV5: UIView {
     
     func makeBox() {
         
-//        print("\(self.message.senderID)..........make box")
+        //        print("\(self.message.senderID)..........make box")
         
         form = .box
         
-//        self.transform = CGAffineTransform(scaleX: scaleback, y: scaleback)
+        //        self.transform = CGAffineTransform(scaleX: scaleback, y: scaleback)
         self.transform = CGAffineTransform.identity
-    
+        
         for subv in self.subviews {
             subv.removeFromSuperview()
         }
@@ -191,15 +191,15 @@ class ShapeV5: UIView {
         
         senderID.frame = CGRect(x:0, y: layer.frame.height * 0.68, width: layer.frame.width, height: layer.frame.height * 0.3)
         
-//        senderID.frame = CGRect(x:0, y: layer.frame.height * 0.68, width: layer.frame.width * 0.32, height: layer.frame.height * 0.3)
+        //        senderID.frame = CGRect(x:0, y: layer.frame.height * 0.68, width: layer.frame.width * 0.32, height: layer.frame.height * 0.3)
         
         idImageView.layer.cornerRadius = 5
         
         self.addSubview(idImageView)
         self.addSubview(messageField)
         self.addSubview(senderID)
-    
-
+        
+        
     }
     
     
@@ -228,7 +228,7 @@ class ShapeV5: UIView {
         idImageView.center = center
         idImageView.layer.masksToBounds = true
         idImageView.contentMode = UIViewContentMode.scaleAspectFill
-
+        
         
         translatesAutoresizingMaskIntoConstraints = false
         autoresizesSubviews = true
@@ -246,7 +246,7 @@ class ShapeV5: UIView {
         
         
         self.backgroundColor = UIColor.black
-    
+        
         layer.borderWidth = 2
         layer.borderColor = outlineColor.cgColor
         layer.cornerRadius = layer.frame.size.width / 8
@@ -287,7 +287,7 @@ class ShapeV5: UIView {
         autoresizesSubviews = true
         
         
-
+        
         
         idImageView.frame = CGRect(x: 0, y: 0, width: layer.frame.width * 0.15, height: layer.frame.height * 0.08)
         
@@ -318,29 +318,29 @@ class ShapeV5: UIView {
         }, completion: { complete in
             
             self.backgroundColor = UIColor.cyan
-//            self.idImageView.frame = CGRect(x: 0, y: 0, width: self.layer.frame.width * 0.15, height: self.layer.frame.height * 0.08)
-//        
-//            
-//            self.messageField.frame = CGRect(x: self.layer.frame.width * 0.10, y: self.layer.frame.height * 0.08, width: self.layer.frame.width * 0.8, height: self.layer.frame.height * 0.2)
-//            
-//            self.senderID.frame = CGRect(x: self.layer.frame.width * 0.18, y: 0, width: self.layer.frame.width * 0.75, height: self.layer.frame.height * 0.1)
-//            
-//            map.frame = CGRect(x: 0, y: self.layer.frame.height * 0.65, width: self.layer.frame.width, height: self.layer.frame.height * 0.35)
-//            
-//            
-//            self.addSubview(
-//                self.idImageView)
-//            self.addSubview(self.messageField)
-//            self.addSubview(self.senderID)
-//            self.addSubview(map)
+            //            self.idImageView.frame = CGRect(x: 0, y: 0, width: self.layer.frame.width * 0.15, height: self.layer.frame.height * 0.08)
+            //
+            //
+            //            self.messageField.frame = CGRect(x: self.layer.frame.width * 0.10, y: self.layer.frame.height * 0.08, width: self.layer.frame.width * 0.8, height: self.layer.frame.height * 0.2)
+            //
+            //            self.senderID.frame = CGRect(x: self.layer.frame.width * 0.18, y: 0, width: self.layer.frame.width * 0.75, height: self.layer.frame.height * 0.1)
+            //
+            //            map.frame = CGRect(x: 0, y: self.layer.frame.height * 0.65, width: self.layer.frame.width, height: self.layer.frame.height * 0.35)
+            //
+            //
+            //            self.addSubview(
+            //                self.idImageView)
+            //            self.addSubview(self.messageField)
+            //            self.addSubview(self.senderID)
+            //            self.addSubview(map)
             
             
         })
-
         
-
-
-    
+        
+        
+        
+        
     }
     
     
@@ -352,7 +352,7 @@ class ShapeV5: UIView {
         let color2red = Double(142/255)
         let color2green = Double(190/255)
         let color2blue = Double(210/255)
-
+        
         let resultRed = color1red + per * (color2red - color1red);
         let resultGreen = color1green + per * (color2green - color1green);
         let resultBlue = color1blue + per * (color2blue - color1blue);
@@ -363,24 +363,24 @@ class ShapeV5: UIView {
         
     }
     
-
     
-//    func resizeImage(image: UIImage) -> UIImage {
-//        
-//        // Figure out what our orientation is, and use that to form the rectangle
-//        let newSize = CGSize(width: 20, height: 20)
-//        
-//        // This is the rect that we've calculated out and this is what is actually used below
-//        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
-//        
-//        // Actually do the resizing to the rect using the ImageContext stuff
-//        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-//        image.draw(in: rect)
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        return newImage!
-//    }
+    
+    //    func resizeImage(image: UIImage) -> UIImage {
+    //
+    //        // Figure out what our orientation is, and use that to form the rectangle
+    //        let newSize = CGSize(width: 20, height: 20)
+    //
+    //        // This is the rect that we've calculated out and this is what is actually used below
+    //        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
+    //
+    //        // Actually do the resizing to the rect using the ImageContext stuff
+    //        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+    //        image.draw(in: rect)
+    //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    //        UIGraphicsEndImageContext()
+    //
+    //        return newImage!
+    //    }
     
     
     
@@ -389,7 +389,7 @@ class ShapeV5: UIView {
     
     let messageStyle = [NSFontAttributeName: UIFont(name: "Futura", size: 6.0)! ]
     let idStyle = [NSFontAttributeName: UIFont(name: "Futura", size: 9.0)! ]
-
+    
     
     
     var message: MessageData
@@ -401,34 +401,34 @@ class ShapeV5: UIView {
     var form: Form = .bubble
     
     var pos: Int {
-        return ShapeV5.allSorted.index(of: self)!
+        return CircleV1.allSorted.index(of: self)!
     }
-  
+    
     
     var posInScreen: Int? {
-        if let num = ShapeV5.inScreen.index(of: self) {
-                return num
-    }
-         else {return nil}
+        if let num = CircleV1.inScreen.index(of: self) {
+            return num
+        }
+        else {return nil}
     }
     
     
     var outlineColor: UIColor {
         
         let per = Double(originY / 500)
-//        let color1red = Double(209/255)
-//        let color1green = Double(15/255)
-//        let color1blue = Double(60/255)
-//        let color2red = Double(142/255)
-//        let color2green = Double(190/255)
-//        let color2blue = Double(210/255)
+        //        let color1red = Double(209/255)
+        //        let color1green = Double(15/255)
+        //        let color1blue = Double(60/255)
+        //        let color2red = Double(142/255)
+        //        let color2green = Double(190/255)
+        //        let color2blue = Double(210/255)
         
-                let color1red = 209.0
-                let color1green = 15.0
-                let color1blue = 60.0
-                let color2red = 142.0
-                let color2green = 190.0
-                let color2blue = 210.0
+        let color1red = 209.0
+        let color1green = 15.0
+        let color1blue = 60.0
+        let color2red = 142.0
+        let color2green = 190.0
+        let color2blue = 210.0
         
         
         
@@ -442,31 +442,51 @@ class ShapeV5: UIView {
         
     }
     
+    
+    
+    
     init(message: MessageData) {
         
         self.message = message
         
-//        idImageView.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        //        idImageView.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         idImageView.contentMode = UIViewContentMode.scaleAspectFit
         
-//        idImageView.image = message.idImage
+        //        idImageView.image = message.idImage
         
-
+        
         let styledMessage = NSAttributedString(string: message.message, attributes: messageStyle)
         let styledID = NSAttributedString(string: message.senderID, attributes: idStyle)
         
         messageField.attributedText = styledMessage
         senderID.attributedText = styledID
-      
-        
-//        originX = CGFloat((message.dist * 200.0)
-//        originY = CGFloat(message.time / 15.0)
         
         
-        originX = CGFloat(message.dist * 300)
-        originY = CGFloat(message.time / 50.0)
+        //        originX = CGFloat((message.dist * 200.0)
+        //        originY = CGFloat(message.time / 15.0)
         
-   
+        
+        
+        let coordinates = (Modelv2.shared.coordinates[message.senderID]) as? CLLocationCoordinate2D
+        
+        // contentOffset. set 
+        
+       let myMapPoints = MKMapPointForCoordinate(coordinates!)
+        
+        
+        
+        
+        originX = CGFloat(myMapPoints.x)
+        originY = CGFloat(myMapPoints.y)
+        
+        
+        
+        
+        
+//        originX = CGFloat(message.dist * 300)
+//        originY = CGFloat(message.time / 50.0)
+        
+        
         super.init(frame: CGRect(x: originX, y: originY, width: 20, height: 20))
         
         
@@ -476,22 +496,22 @@ class ShapeV5: UIView {
         layer.masksToBounds = true
         layer.zPosition = CGFloat(100.0 * message.dist * -1)
         idImageView.frame = CGRect(x: 0, y: 0, width: layer.frame.width/2, height: layer.frame.height/2)
-//        idImageView.image = resizeImage(image: message.idImage)
+        //        idImageView.image = resizeImage(image: message.idImage)
         idImageView.translatesAutoresizingMaskIntoConstraints = false
         idImageView.clipsToBounds = false
-
+        
         
         
         
         idImageView.layer.masksToBounds = true
-
+        
         
         addSubview(idImageView)
-//
+        //
         translatesAutoresizingMaskIntoConstraints = false
         autoresizesSubviews = false
         
-        ShapeV5.all.append(self)
+        CircleV1.all.append(self)
         
     }
     
@@ -501,16 +521,17 @@ class ShapeV5: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
     
     class MessageData {
-//        static var all = [Message]()
+        //        static var all = [Message]()
         
         var message: String
         var senderID: String
         var idImage: UIImage
         var dist: Double
         var time: Double
+        var coordinates: CLLocation
         
         init (message: String, senderName: String, idImage: UIImage, dist: Double, time: Double) {
             self.message = message
@@ -518,7 +539,9 @@ class ShapeV5: UIView {
             self.idImage = idImage
             self.dist = dist
             self.time = time
-
+            self.coordinates = CLLocation(latitude: 90, longitude: 90)
+            
+            
         }
         
     }

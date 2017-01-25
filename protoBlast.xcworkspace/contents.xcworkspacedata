@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:extra.swift">
+   </FileRef>
+   <FileRef
       location = "group:protoBlast.xcodeproj">
    </FileRef>
    <FileRef
